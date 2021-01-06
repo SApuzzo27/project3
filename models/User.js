@@ -22,7 +22,13 @@ const UserSchema = new mongoose.Schema({
      type: mongoose.Types.ObjectId,
      ref: "Comment"
    }
- ]
+ ],
+ userWatchList: [ {
+   type: mongoose.Types.ObjectId,
+   ref: "UserWatchList"
+ }
+ ],
+ 
   // ..anything else you want on your user
 });
 
