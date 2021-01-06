@@ -23,12 +23,36 @@ const commentsSeeds = [
    {
       body: "👾 another",
       username: "Admin"
+   }
+];
+const userWatchListSeeds = [
+   {
+      title:  " Step Brothers",
+      username: "Admin"
+   },
+   {
+      title:  "The Hang Over",
+      username: "Admin"
+   },
+   {
+      title:  " Wedding Crashers",
+      username: "Admin"
    },
 
 ];
+// const groupWatchListSeeds = [
+//    {
+//       clubName: "Group1",
+//       title: "Step Brothers",
+//    }
+// ]
+
+
 
 // remove all comments
 db.Comment.deleteMany({})
+// remove all userWatchList
+.then(() => db.UserWatchList.deleteMany({}))
 // remove all users
   .then(() => db.User.deleteMany({}))
   // add user
@@ -42,6 +66,14 @@ db.Comment.deleteMany({})
       // add comment ref to user
       .then(({_id}) => db.User.findOneAndUpdate({_id: user._id}, { $push: { comments: _id } }, { new: true }))
   )
+  .then((user) => db.UserWatchList.create(userWatchListSeeds[0])
+      // add watchlist ref to user
+      .then(({_id}) => db.User.findOneAndUpdate({_id: user._id}, { $push: { UserWatchList: _id } }, { new: true }))
+  )
+  .then((user) => db.UserWatchList.create(userWatchListSeeds[1])
+      // add watchlist ref to user
+      .then(({_id}) => db.User.findOneAndUpdate({_id: user._id}, { $push: { UserWatchList: _id } }, { new: true }))
+  )
   .then(() => {
     process.exit(0);
   })
@@ -49,3 +81,4 @@ db.Comment.deleteMany({})
     console.error(err);
     process.exit(1);
   });
+
