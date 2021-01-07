@@ -40,12 +40,18 @@ const userWatchListSeeds = [
    },
 
 ];
-// const groupWatchListSeeds = [
-//    {
-//       clubName: "Group1",
-//       title: "Step Brothers",
-//    }
-// ]
+const groupSeeds = [
+   {
+      clubName: "Friday Night",
+    
+   }, 
+   {
+      clubName: "Sunday Afternoon"
+   }, 
+   {
+      clubName: "Saturday Night"
+   }
+]
 
 
 
@@ -55,6 +61,8 @@ db.Comment.deleteMany({})
 .then(() => db.UserWatchList.deleteMany({}))
 // remove all users
   .then(() => db.User.deleteMany({}))
+      // add Group
+      .then(() => db.Group.create(groupSeeds))
   // add user
   .then(() => db.User.create(userSeed))
   // add comments seeds
@@ -64,16 +72,20 @@ db.Comment.deleteMany({})
   )
   .then((user) => db.Comment.create(commentsSeeds[1])
       // add comment ref to user
-      .then(({_id}) => db.User.findOneAndUpdate({_id: user._id}, { $push: { comments: _id } }, { new: true }))
+      .then(({_id}) => {
+         console.log("id", _id)
+         db.User.findOneAndUpdate({_id: user._id}, { $push: { comments: _id } }, { new: true })
+      })
   )
-  .then((user) => db.UserWatchList.create(userWatchListSeeds[0])
-      // add watchlist ref to user
-      .then(({_id}) => db.User.findOneAndUpdate({_id: user._id}, { $push: { UserWatchList: _id } }, { new: true }))
-  )
-  .then((user) => db.UserWatchList.create(userWatchListSeeds[1])
-      // add watchlist ref to user
-      .then(({_id}) => db.User.findOneAndUpdate({_id: user._id}, { $push: { UserWatchList: _id } }, { new: true }))
-  )
+  .then((user) => console.log("user", user))
+//   .then((user) => db.UserWatchList.create(userWatchListSeeds[0])
+//       // add watchlist ref to user
+//       .then(({_id}) => db.User.findOneAndUpdate({_id: user._id}, { $push: { UserWatchList: _id } }, { new: true }))
+//   )
+//   .then((user) => db.UserWatchList.create(userWatchListSeeds[1])
+//       // add watchlist ref to user
+//       .then(({_id}) => db.User.findOneAndUpdate({_id: user._id}, { $push: { UserWatchList: _id } }, { new: true }))
+//   )
   .then(() => {
     process.exit(0);
   })
