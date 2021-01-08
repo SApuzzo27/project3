@@ -7,10 +7,12 @@ clubName: {
     required: true
 },
 
-users: 
+username: [
     {     
         type: Array,
-    },
+        ref: "User"
+    }
+],
     
 groupWatchList: [
     {

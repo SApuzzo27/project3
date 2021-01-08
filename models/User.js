@@ -28,7 +28,10 @@ const UserSchema = new mongoose.Schema({
    ref: "UserWatchList"
  }
  ],
- 
+ group: {
+  type: mongoose.Types.ObjectId,
+  ref: "Group"
+ },
   // ..anything else you want on your user
 });
 
