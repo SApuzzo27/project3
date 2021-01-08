@@ -7,9 +7,10 @@ clubName: {
     required: true
 },
 
+
 username: [
     {     
-        type: Array,
+        type: Schema.Types.ObjectId,
         ref: "User"
     }
 ],
