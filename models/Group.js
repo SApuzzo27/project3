@@ -7,11 +7,13 @@ clubName: {
     required: true
 },
 
-users: [
+
+username: [
     {     
         type: Schema.Types.ObjectId,
         ref: "User"
-    }],
+    }
+],
     
 groupWatchList: [
     {
