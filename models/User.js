@@ -18,20 +18,33 @@ const UserSchema = new mongoose.Schema({
     required: true,
   },
   comments: [
-   {
-     type: mongoose.Types.ObjectId,
-     ref: "Comment"
-   }
- ],
- userWatchList: [ {
-   type: mongoose.Types.ObjectId,
-   ref: "UserWatchList"
- }
- ],
- clubName: {
-  type: mongoose.Types.ObjectId,
-  ref: "Group"
- },
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "Comment",
+    },
+  ],
+  WatchList: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "WatchList",
+    },
+  ],
+  movies: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "Movies",
+    },
+  ],
+  clubName: {
+    type: mongoose.Types.ObjectId,
+    ref: "Group",
+  },
+  watchedMovies: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "Movies",
+    },
+  ],
 
   // ..anything else you want on your user
 });
