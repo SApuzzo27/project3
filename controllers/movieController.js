@@ -6,6 +6,11 @@ module.exports = {
       .then((dbMovie) => res.json(dbMovie))
       .catch((err) => res.status(422).json(err));
   },
+  fineById: function (req, res) {
+    db.Movie.findById(req.params.id)
+      .then((dbMovie) => res.json(dbMovie))
+      .catch((err) => res.status(422).json(err));
+  },
   create: function (req, res) {
     // // require auth => skipping for now
     // if(!req.user) {
