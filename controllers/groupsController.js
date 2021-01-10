@@ -1,6 +1,6 @@
 const db = require("../models");
 
-module.export = {
+module.exports = {
   findAll: function (req, res) {
     db.Group.find(req.query)
       .then((dbGroup) => res.json(dbGroup))
@@ -22,6 +22,13 @@ module.export = {
     // }
     db.Group.updateOne({ _id: req.params.id }, { $push: { users: req.body } })
       .then((dbGroup) => res.json(dbGroup))
+      .catch((err) => res.status(500).json(err));
+  },
+  addWatchlist: function (req, res) {
+    db.Group.findOne({ _id: req.params.id }) // /api/group/:id
+      .then((dbGroup) => {
+        dbGroup.populate(req.body.params.watchList);
+      }) // json with the value
       .catch((err) => res.status(500).json(err));
   },
 };
