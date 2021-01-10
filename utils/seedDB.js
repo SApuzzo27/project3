@@ -9,11 +9,28 @@ mongoose.connect(
   mongoOptions
 );
 
-const userSeed = {
+const userSeedAdmin = {
   username: "Admin",
   email: "admin@contact.us",
   password: "1",
 };
+const userSeeds = [
+  {
+    username: "JohnDoe",
+    email: "John.Doe@example.com",
+    password: "Letmein",
+  },
+  {
+    username: "JaneDoe",
+    email: "Jane.Doe@example.com",
+    password: "Letmein",
+  },
+  {
+    username: "BobDobalina",
+    email: "bob@dobalina.io",
+    password: "Letmein",
+  },
+];
 const commentsSeeds = [
   {
     body: "🚀 initial seed",
@@ -205,8 +222,10 @@ db.Comment.deleteMany({})
   .then(() => db.Movie.create(movieSeeds))
   // add Group
   .then(() => db.Group.create(groupSeeds))
+  // add regular users
+  .then(() => db.User.create(userSeeds))
   // add user
-  .then(() => db.User.create(userSeed))
+  .then(() => db.User.create(userSeedAdmin))
   // add comments seeds
   .then((user) =>
     db.Comment.create(commentsSeeds[0])
