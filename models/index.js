@@ -1,7 +1,7 @@
 module.exports = {
   Comment: require("./Comment"),
-  User: require("./User"), 
-  GroupWatchList: require("./GroupWatchList"), 
-  UserWatchList: require("./UserWatchList"), 
-  Group: require("./Group"), 
+  User: require("./User"),
+  Group: require("./Group"),
+  Movie: require("./Movie"),
+  WatchList: require("./WatchList"),
 };
