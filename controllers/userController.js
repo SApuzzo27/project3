@@ -53,6 +53,11 @@ module.exports = {
       .then((dbUser) => res.json(dbUser))
       .catch((err) => res.status(422).json(err));
   },
+  findByName: function (req, res) {
+    db.User.findOne({ username: req.params.id })
+      .then((dbUser) => res.json(dbUser))
+      .catch((err) => res.status(500).json(err));
+  },
   addGroup: function (req, res) {
     // // require auth => skipping for now
     // if(!req.user) {
