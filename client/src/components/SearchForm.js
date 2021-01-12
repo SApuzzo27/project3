@@ -1,8 +1,9 @@
 import React from "react";
+import "./SearchForm.css";
 
 function SearchForm(props) {
   return (
-    <form>
+    <form className="movieSearchForm">
       <div className="form-group">
         <label htmlFor="search">Search:</label>
         <input

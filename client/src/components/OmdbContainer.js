@@ -10,7 +10,7 @@ import API from "../utils/API";
 class OmdbContainer extends Component {
   state = {
     result: {},
-    search: ""
+    search: "",
   };
 
   // When this component mounts, search for the movie "The Matrix"
@@ -18,24 +18,33 @@ class OmdbContainer extends Component {
     this.searchMovies("The Matrix");
   }
 
-  searchMovies = query => {
+  searchMovies = (query) => {
     API.search(query)
-      .then(res => this.setState({ result: res.data }))
-      .catch(err => console.log(err));
+      .then((res) => this.setState({ result: res.data }))
+      .catch((err) => console.log(err));
   };
 
-  handleInputChange = event => {
+  saveMovie = () => {
+    return 0;
+  };
+
+  handleInputChange = (event) => {
     const value = event.target.value;
     const name = event.target.name;
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
 
   // When the form is submitted, search the OMDB API for the value of `this.state.search`
-  handleFormSubmit = event => {
+  handleFormSubmit = (event) => {
     event.preventDefault();
     this.searchMovies(this.state.search);
+  };
+
+  handleSaveMovie = (event) => {
+    event.preventDefault();
+    this.saveMovie();
   };
 
   render() {
@@ -60,7 +69,7 @@ class OmdbContainer extends Component {
             </Card>
           </Col>
           <Col size="md-4">
-            <Card heading="Search">
+            <Card>
               <SearchForm
                 value={this.state.search}
                 handleInputChange={this.handleInputChange}
