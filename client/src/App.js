@@ -2,10 +2,10 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import './App.css';
 import './Login.css'
-import Home from './components/pages/Home';
+import Home from './pages/Home';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Groups from './components/pages/Groups';
-import Other from './components/pages/Other';
+import Groups from './pages/Groups';
+import Other from './pages/Other';
 import SignUp from './components/SignUpComponents';
 
 function App() {
