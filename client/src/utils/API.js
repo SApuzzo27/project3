@@ -10,7 +10,7 @@ export default {
     return axios.get("/api/movie");
   },
   saveMovie: function (movieData) {
-    return axios.post("/api/movie", movieData);
+    return axios.post("/api/movie/create", movieData);
   },
   getUserByName: function (username) {
     return axios.get("/api/clubuser/" + username);

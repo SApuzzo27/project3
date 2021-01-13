@@ -64,7 +64,7 @@ function User() {
       imdbID: searchResult.imdbID,
     };
     API.saveMovie(movieData)
-      .then((res) => console.log(res.data))
+      .then((res) => console.log(res))
       .catch((err) => {
         setErrorMessage(err);
         console.log(errorMessage);

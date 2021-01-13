@@ -1,3 +1,8 @@
 .movieCard {
-  max-width: 600px;
+  max-width: 25rem;
+}
+
+.movieCardPoster {
+  max-width: 10rem;
+  margin: auto;
 }
