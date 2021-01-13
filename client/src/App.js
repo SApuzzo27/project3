@@ -42,8 +42,10 @@ function App() {
 			<Container>
         
 				<Switch>
-        <Route component={Home} />
-        
+				
+				<Route exact path={["/",]}>
+            	<Home />
+				</Route>
 					<Route
 						exact
 						path='/login'

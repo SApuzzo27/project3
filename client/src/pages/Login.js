@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import userAPI from "../utils/userAPI";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
@@ -61,10 +62,10 @@ class Login extends Component {
                 disabled={!(this.state.email && this.state.password)}
                 onClick={this.handleFormSubmit}
               >
-                Log in
+                Login
               </FormBtn>
-             <Link to="/login">
-               <FormBtn> Log In </FormBtn>
+             <Link to="/signup">
+               <FormBtn> Sign Up </FormBtn>
              </Link>
             </form>
           </Col>

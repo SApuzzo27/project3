@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import '../App.css';
+
 import userAPI from "../utils/userAPI";
 import {  Redirect, Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
@@ -36,7 +36,7 @@ class Signup extends Component {
         .then(res => {
           if(res.status === 200 ){
             this.props.authenticate();
-            return <Redirect to="/user" />
+            return <Redirect to="/comments" />
           }
         })
         .catch(err => console.log(err.response.data));
@@ -45,7 +45,6 @@ class Signup extends Component {
 
   render() {
     return (
-
       <Container fluid>
         <Row>
           <Col size="12">
@@ -82,17 +81,17 @@ class Signup extends Component {
                 // disabled={!(this.state.email && this.state.password)}
                 onClick={this.handleFormSubmit}
               >
-                signup
+                Sign Up
               </FormBtn>
-              <Link to="/signup">
-                <FormBtn> Sign Up </FormBtn>
-              </Link>
+              <Link to="/">
+               <FormBtn> Login </FormBtn>
+             </Link>
             </form>
           </Col>
           
         </Row>
         {/* redirect on authenticated */}
-        {this.props.authenticated ? <Redirect to='/user'/>: <div></div>}
+        {this.props.authenticated ? <Redirect to='/user:id'/>: <div></div>}
 
 
       </Container>
