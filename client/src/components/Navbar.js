@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import useLogRender from "../utils/useLogPath";
 
 function Navbar() {
+  useLogRender();
+
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
@@ -53,15 +56,15 @@ function Navbar() {
             
             <li className='nav-item'>
               <Link
-                to='/Others'
+                to='/user'
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
-                Movies or other 
+                My Page 
               </Link>
             </li><li className='nav-item'>
               <Link
-                to='/LoginComponent'
+                to='/login'
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
@@ -71,7 +74,7 @@ function Navbar() {
 
             <li>
               <Link
-                to='/sign-up'
+                to='/signup'
                 className='nav-links-mobile'
                 onClick={closeMobileMenu}
               >

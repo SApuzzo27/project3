@@ -1,32 +1,30 @@
-
-// import Navbar from "./components/Navbar";
 import "./App.css";
 import "./components/Login.css";
-import Home from "./pages/Home";
-import Groups from "./pages/Groups";
-// import SignUp from "./components/SignUpComponents";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-// import Comments from "./pages/Comments";
 import { Container } from "./components/Grid";
-// import Comment from "./pages/Comment";
+import Home from "./pages/Home";
+import Groups from "./pages/Groups";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NoMatch from "./pages/NoMatch";
 import User from "./pages/User";
 import Movie from "./pages/MovieSearch";
-import Head from "./components/Head";
 import userAPI from "./utils/userAPI";
 import ProtectedRoute from "./components/ProtectedRoute"
+// import Comments from "./pages/Comments";
+// import Comment from "./pages/Comment";
+import Navbar from "./components/Navbar";
+// import SignUp from "./components/SignUpComponents";
 
 
 function App() {
 	const [userState, setUserState] = useState({});
 
-   useEffect(() => { 
+    useEffect(() => { 
 	   // auth user on first render
       authenticate() 
-   }, []);
+    }, []);
 
 	//user authentication
 	function authenticate() {
@@ -40,11 +38,12 @@ function App() {
 
 	return (
 		<Router>
-			<Head />
+			<Navbar />
 			<Container>
         
 				<Switch>
         <Route component={Home} />
+        
 					<Route
 						exact
 						path='/login'
@@ -56,6 +55,7 @@ function App() {
 							/>
 						)}
 					/>
+
 					<Route
 						exact
 						path='/signup'
@@ -82,9 +82,11 @@ function App() {
                 </ProtectedRoute>
 
 					<Route component={NoMatch} />
+
 				</Switch>
+
 			</Container>
-          { userState.email ? <Redirect to="/" /> : <></>}
+          { userState.email ? <Redirect to="/user" /> : <></>}
 		</Router>
 	);
 }

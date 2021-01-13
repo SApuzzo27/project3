@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import userAPI from "../utils/userAPI";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
@@ -64,8 +63,8 @@ class Login extends Component {
               >
                 Log in
               </FormBtn>
-             <Link to="/signup">
-               <FormBtn> Signup </FormBtn>
+             <Link to="/login">
+               <FormBtn> Log In </FormBtn>
              </Link>
             </form>
           </Col>

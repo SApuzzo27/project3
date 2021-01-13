@@ -8,7 +8,7 @@ import Footer from '../components/Footer';
 function Home() {
   return (
     <>
-      <Navbar />
+
       <HeroSection />
       <Footer />
     </>

@@ -84,8 +84,8 @@ class Signup extends Component {
               >
                 signup
               </FormBtn>
-              <Link to="/">
-                <FormBtn> Login </FormBtn>
+              <Link to="/signup">
+                <FormBtn> Sign Up </FormBtn>
               </Link>
             </form>
           </Col>
