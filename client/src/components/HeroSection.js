@@ -2,9 +2,12 @@ import React from 'react';
 import '../App.css';
 import { Button } from './Button';
 import './HeroSection.css';
+import signup from '../pages/Signup'
+import login from '../pages/Login'
 
 function HeroSection() {
   return (
+   
     <div className='hero-container'>
       <video src='/videos/video-1.mp4' autoPlay loop muted />
       <h1>Couch Potatoes</h1>
@@ -14,17 +17,19 @@ function HeroSection() {
           className='btns'
           buttonStyle='btn--outline'
           buttonSize='btn--large'
+          onClick component={signup}
         >
-          Button for action
+          Sign Up
         </Button>
         <Button
           className='btns'
           buttonStyle='btn--primary'
           buttonSize='btn--large'
-          onClick={console.log('hey')}
+          onClick component={login}
         >
-          Other button for action <i className='far fa-play-circle' />
-        </Button>
+          Log In <i className='far fa-play-circle' />
+        </Button> 
+        {/* <Button onClick component={login}> */}
       </div>
     </div>
   );

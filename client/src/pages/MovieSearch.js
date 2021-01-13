@@ -1,8 +1,8 @@
 import React from "react";
 import OmdbContainer from "../components/OmdbContainer";
 
-function App() {
+function MovieSearch() {
   return <OmdbContainer />;
 }
 
-export default App;
+export default MovieSearch;
