@@ -3,8 +3,6 @@ const userController = require("../../controllers/userController");
 // Requiring passport as we've configured it
 const passport = require("../../utils/passport");
 
-router.route("/users").get(userController.findAll);
-
 // Matches with "/api/user/login"
 router
   .route("/login")
