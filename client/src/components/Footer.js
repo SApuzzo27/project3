@@ -1,6 +1,6 @@
 import React from "react";
 import "./Footer.css";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -35,6 +35,7 @@ function Footer() {
           <img
             src="images/logocpc.png"
             style={{ width: 200, marginTop: -4, marginRight: -197 }}
+            alt=""
           />
           <div class="social-icons"></div>
         </div>
