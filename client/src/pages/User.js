@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //import _ from "lodash";
 
 //import OmdbContainer from "../components/OmdbContainer";
@@ -15,17 +15,14 @@ function User() {
   //const [currentUser, setCurrentUser] = useState({});
   const [searchResult, setSearchResult] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
-  //const [userMovies, setUserMovies] = useState([]);
+  const [userMovies, setUserMovies] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  // useEffect(() => {
-  //   if (_.isEmpty(currentUser)) {
-  //     loadUserByName("BobDobalina");
-  //   }
-  //   if (!_.isEmpty(currentUser)) {
-  //     loadUserMovies(currentUser);
-  //   }
-  // }, [userMovies, currentUser]);
+  useEffect(() => {
+    if (_.isEmpty(userMovies)) {
+      getAllMovies();
+    }
+  }, [userMovies]);
 
   // function loadUserByName(userName) {
   //   console.log("loadUserByName");
@@ -36,6 +33,17 @@ function User() {
   //       return 1;
   //     });
   // }
+
+  function getAllMovies() {
+    API.getAllSavedMovies()
+      .then((res) => {
+        setUserMovies(res.data);
+      })
+      .catch((err) => {
+        setErrorMessage(err);
+        console.log(errorMessage);
+      });
+  }
 
   function searchMovies() {
     API.search(searchTerm)
@@ -97,7 +105,7 @@ function User() {
         </Col>
       </Row>
       <Row>
-        <Col size="md-12">
+        <Col size="md-6">
           {searchResult.Title ? (
             <Movie
               title={searchResult.Title}
@@ -117,6 +125,10 @@ function User() {
             "No Results"
           )}
         </Col>
+      </Row>
+      <Row>
+        {userMovies.length ?
+         }
       </Row>
     </Container>
   );
