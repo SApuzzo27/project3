@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-//import { Button } from "./Button";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import LogoutBtn from "../components/LogoutButton"
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -75,17 +75,17 @@ function Navbar() {
               </Link>
             </li>
 
-            {/* <li>
+            <li>
               <Link
-                to='/Others'
+                to='/'
                 className='nav-links-mobile'
-                onClick={closeMobileMenu}
+                onClick={LogoutBtn}
               >
-                Sign Up
+                Log Out 
               </Link>
-            </li> */}
+            </li>
           </ul>
-          {/* {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>} */}
+          
         </div>
       </nav>
     </>

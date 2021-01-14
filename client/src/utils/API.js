@@ -15,4 +15,8 @@ export default {
   getUserByName: function (username) {
     return axios.get("/api/clubuser/" + username);
   },
+  logoutUser: function () {
+  return axios.post("/api/user/logout")
+    }
+  
 };
