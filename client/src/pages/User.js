@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-//import _ from "lodash";
+import _ from "lodash";
 
 //import OmdbContainer from "../components/OmdbContainer";
 import Container from "../components/Container";
@@ -125,8 +125,10 @@ function User() {
             "No Results"
           )}
         </Col>
+        <Col size="md-6">
+          <h2>Other stuff here</h2>
+        </Col>
       </Row>
-      <Row></Row>
     </Container>
   );
 }
