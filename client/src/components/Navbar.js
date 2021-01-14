@@ -58,16 +58,7 @@ function Navbar() {
 
             <li className="nav-item">
               <Link
-                to="/others"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Movies or other
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/Others"
+                to="/signin"
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
