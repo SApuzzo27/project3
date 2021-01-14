@@ -126,10 +126,7 @@ function User() {
           )}
         </Col>
       </Row>
-      <Row>
-        {userMovies.length ?
-         }
-      </Row>
+      <Row></Row>
     </Container>
   );
 }
