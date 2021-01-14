@@ -38,12 +38,8 @@ function Footer() {
       <section class='social-media'>
         <div class='social-media-wrap'>
           <div class='footer-logo'>
-            <Link to='/' className='social-logo'>
-              CPC
-              <i class='fab fa-typo3' />
-            </Link>
           </div>
-          <small class='website-rights'>CPC © 2020</small>
+          <img src='images/logocpc.png' style={{width:200, marginTop: -4, marginRight:-197,}} />
           <div class='social-icons'>
           </div>
         </div>
