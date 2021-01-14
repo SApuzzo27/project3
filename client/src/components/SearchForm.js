@@ -1,21 +1,29 @@
 import React from "react";
+import "./SearchForm.css";
 
 function SearchForm(props) {
   return (
-    <form>
+    <form className="movieSearchForm">
       <div className="form-group">
-        <label htmlFor="search">Search:</label>
+        <label htmlFor="Search">Search:</label>
         <input
+          className="form-control"
           onChange={props.handleInputChange}
-          value={props.value}
+          value={props.q}
           name="search"
           type="text"
-          className="form-control"
           placeholder="Search For a Movie"
           id="search"
+          required
         />
-        <br />
-        <button onClick={props.handleFormSubmit} className="btn btn-primary">
+      </div>
+      <br />
+      <div>
+        <button
+          onClick={props.handleFormSubmit}
+          type="submit"
+          className="btn btn-primary float-right"
+        >
           Search
         </button>
       </div>
