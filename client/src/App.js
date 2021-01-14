@@ -15,8 +15,9 @@ function App() {
           <Navbar />
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/Groups" component={Groups} />
-            <Route path="/Other" component={Other} />
+            <Route path="/user" exact component={User} />
+            <Route path="/groups" component={Groups} />
+            <Route path="/other" component={Other} />
           </Switch>
         </Router>
       </div>
