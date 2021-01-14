@@ -29,16 +29,14 @@ function Footer() {
           </div>
         </div>
       </div>
-      <section className="social-media">
-        <div className="social-media-wrap">
-          <div className="footer-logo">
-            <Link to="/" className="social-logo">
-              CPC
-              <i className="fab fa-typo3" />
-            </Link>
-          </div>
-          <small className="website-rights">CPC © 2020</small>
-          <div className="social-icons"></div>
+      <section class="social-media">
+        <div class="social-media-wrap">
+          <div class="footer-logo"></div>
+          <img
+            src="images/logocpc.png"
+            style={{ width: 200, marginTop: -4, marginRight: -197 }}
+          />
+          <div class="social-icons"></div>
         </div>
       </section>
     </div>
