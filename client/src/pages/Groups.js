@@ -1,6 +1,14 @@
 import React from 'react';
 import '../App.css';
+import Footer from '../components/Footer';
+import GroupMemberCards from '../components/GroupMemberCards';
 
-export default function Groups() {
-  return <h1 className='Groups'>Groups</h1>;
+function Groups() {
+  return (
+    <>
+      <GroupMemberCards />
+      <Footer />
+    </>
+  );
 }
+export default Groups;

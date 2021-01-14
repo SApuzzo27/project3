@@ -116,3 +116,36 @@ h1 {
     margin-bottom: 2rem;
   }
 }
+
+.cards_1 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  max-width: 50%;
+  height: 50%;
+  max-height: 50%;
+  object-fit: cover;
+  transition: all 0.2s linear;
+}
+
+.cards__container_1 {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  max-width: 1120px;
+  width: 90%;
+  margin: 0 auto;
+}
+.cards_wrapper_1 {
+  position: relative;
+  margin: 50px 0 45px;
+}
+
+.card_items_1 {
+  display: flex;
+  flex: 1;
+  margin: 0 1rem;
+  border-radius: 10px;
+}
