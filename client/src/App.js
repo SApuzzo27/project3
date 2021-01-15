@@ -70,7 +70,7 @@ function App() {
 						)}
 					/>
 
-                <ProtectedRoute exact path={['/', 'user/:id']} >
+                <ProtectedRoute exact path={['/', '/user/:id']} >
                     <User {...userState} />
                 </ProtectedRoute>
 
@@ -88,7 +88,7 @@ function App() {
 				</Switch>
 
 			</Container>
-           { userState.email ? <Redirect to="/user:id" /> : <></>}
+            { userState.email ? <Redirect to="/user:id" /> : <></>}
 		</Router>
 	);
 }
