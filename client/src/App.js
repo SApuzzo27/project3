@@ -68,7 +68,7 @@ function App() {
               <Signup {...props} authenticate={authenticate} user={userState} />
             )}
           />
-          <ProtectedRoute exact path={["/user"]}>
+          <ProtectedRoute exact path={["/", "/user"]}>
             <User {...userState} />
           </ProtectedRoute>
           {/* <ProtectedRoute exact path={["/user/:id"]}>
