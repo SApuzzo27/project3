@@ -21,9 +21,9 @@ const MovieSchema = new Schema(
     type: { type: String },
     imdbID: { type: String },
 
-    userIds: [
+    username: [
       {
-        type: Schema.Types.ObjectId,
+        type: Array,
         ref: "User",
       },
     ], //all the users who added the movie

@@ -9,7 +9,7 @@ const GroupSchema = new Schema({
 
   username: [
     {
-      type: Schema.Types.ObjectId,
+      type: Array,
       ref: "User",
     },
   ],

@@ -58,12 +58,14 @@ const WatchListSeeds = [
 const groupSeeds = [
   {
     clubName: "Friday Night",
+    username: ["Admin", "JohnDoe"]
   },
   {
     clubName: "Sunday Afternoon",
   },
   {
     clubName: "Saturday Night",
+    username: ["JaneDoe"]
   },
 ];
 
@@ -173,6 +175,7 @@ const movieSeeds = [
       "https://m.media-amazon.com/images/M/MV5BYjhhZDE3NjgtMjkzNC00NzI3LWJhOTItMWQ5ZjljODA5NWNkXkEyXkFqcGdeQXVyMzQ2MDI5NjU@._V1_SX300.jpg",
     type: "series",
     imdbID: "tt7049682",
+    username: ["Wilmar", "Carlos"],
   },
   {
     title: "Pan's Labyrinth",
@@ -271,6 +274,19 @@ db.Comment.deleteMany({})
           { new: true }
         )
       )
+// add group to user 
+      .then((user) =>
+      db.Group.create(groupSeeds[0])
+        // add group ref to user
+        .then(({ _id }) =>
+          db.User.findOneAndUpdate(
+            { _id: user._id },
+            { $push: { Group: _id } },
+            { new: true }
+          )
+        )
+      )
+    
   )
   .then(() => {
     process.exit(0);
