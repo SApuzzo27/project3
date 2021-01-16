@@ -38,7 +38,7 @@ const MovieSchema = new Schema(
 );
 
 MovieSchema.virtual("addedBy").get(function () {
-  return this.userIds[0];
+  return this.username[0];
 });
 
 const Movie = mongoose.model("Movie", MovieSchema);
