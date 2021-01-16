@@ -21,10 +21,8 @@ function User() {
   const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
-    if (_.isEmpty(userMovies)) {
-      getAllMovies();
-    }
-  });
+    getAllMovies();
+  })[userMovies];
 
   // function loadUserByName(userName) {
   //   console.log("loadUserByName");
