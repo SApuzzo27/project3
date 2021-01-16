@@ -175,6 +175,7 @@ const movieSeeds = [
       "https://m.media-amazon.com/images/M/MV5BYjhhZDE3NjgtMjkzNC00NzI3LWJhOTItMWQ5ZjljODA5NWNkXkEyXkFqcGdeQXVyMzQ2MDI5NjU@._V1_SX300.jpg",
     type: "series",
     imdbID: "tt7049682",
+    username: ["Wilmar", "Carlos"],
   },
   {
     title: "Pan's Labyrinth",
