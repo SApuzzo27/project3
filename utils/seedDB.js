@@ -58,12 +58,14 @@ const WatchListSeeds = [
 const groupSeeds = [
   {
     clubName: "Friday Night",
+    username: ["Admin", "JohnDoe"]
   },
   {
     clubName: "Sunday Afternoon",
   },
   {
     clubName: "Saturday Night",
+    username: ["JaneDoe"]
   },
 ];
 
