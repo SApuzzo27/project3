@@ -21,8 +21,10 @@ function User() {
   const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
-    getAllMovies();
-  })[userMovies];
+    if (_.isEmpty(userMovies)) {
+      getAllMovies();
+    }
+  }, [userMovies]);
 
   // function loadUserByName(userName) {
   //   console.log("loadUserByName");
@@ -72,8 +74,10 @@ function User() {
       imdbID: searchResult.imdbID,
     };
     API.saveMovie(movieData)
-      .then((res) => console.log(res))
-      .then(getAllMovies())
+      .then((res) => {
+        console.log(res);
+        getAllMovies();
+      })
       .catch((err) => {
         setErrorMessage(err);
         console.log(errorMessage);
