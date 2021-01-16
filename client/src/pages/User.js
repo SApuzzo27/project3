@@ -12,7 +12,7 @@ import Movie from "../components/Movie";
 import "../App.css";
 import API from "../utils/API";
 
-function User() {
+function User({ username }) {
   //const [currentUser, setCurrentUser] = useState({});
   const [searchResult, setSearchResult] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
