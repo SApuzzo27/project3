@@ -1,4 +1,8 @@
 .movieSearchForm {
-  border-width: 1rem;
   margin: auto;
+}
+
+.searhContainer {
+  border-width: 1px;
+  border-style: inset;
 }

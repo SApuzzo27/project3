@@ -29,15 +29,15 @@ function Footer() {
           </div>
         </div>
       </div>
-      <section class="social-media">
-        <div class="social-media-wrap">
-          <div class="footer-logo"></div>
+      <section className="social-media">
+        <div className="social-media-wrap">
+          <div className="footer-logo"></div>
           <img
             src="images/logocpc.png"
             style={{ width: 200, marginTop: -4, marginRight: -197 }}
             alt=""
           />
-          <div class="social-icons"></div>
+          <div className="social-icons"></div>
         </div>
       </section>
     </div>
