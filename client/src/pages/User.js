@@ -8,23 +8,27 @@ import Row from "../components/Row";
 import Col from "../components/Col";
 import SearchForm from "../components/SearchForm";
 import Movie from "../components/Movie";
-//import MovieListItem from "../components/MovieListItem";
+import MovieCard from "../components/MovieCard";
 import "../App.css";
 import API from "../utils/API";
 
-//function User({ username }) {
-function User() {
+//function User() {
+function User({ username }) {
   //const [currentUser, setCurrentUser] = useState({});
   const [searchResult, setSearchResult] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
+  const [movies, setMovies] = useState([]);
   const [userMovies, setUserMovies] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
-    if (_.isEmpty(userMovies)) {
+    if (_.isEmpty(movies)) {
       getAllMovies();
     }
-  }, [userMovies]);
+    if (_.isEmpty(userMovies)) {
+      getUserMovies();
+    }
+  }, [movies]);
 
   // function loadUserByName(userName) {
   //   console.log("loadUserByName");
@@ -38,6 +42,17 @@ function User() {
 
   function getAllMovies() {
     API.getAllSavedMovies()
+      .then((res) => {
+        setMovies(res.data);
+      })
+      .catch((err) => {
+        setErrorMessage(err);
+        console.log(errorMessage);
+      });
+  }
+
+  function getUserMovies() {
+    API.getSavedMoviesByUser()
       .then((res) => {
         setUserMovies(res.data);
       })
@@ -100,6 +115,7 @@ function User() {
     <Container fluid="true">
       <Row>
         <Col size="md-3">
+          <h3>Hello {username} </h3>
           <SearchForm
             handleInputChange={handleInputChange}
             handleFormSubmit={handleFormSubmit}
@@ -128,35 +144,40 @@ function User() {
         </Col>
       </Row>
       <Row>
-        <h3>Saved Movies</h3>
-        <div className="card-group">
-          {userMovies.length !== 0 ? (
-            userMovies.map((item, index) => {
-              return (
-                <div className="col-md-2" key={index}>
-                  <div className="card">
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href={`https://imdb.com/title/${item.imdbID}`}
-                    >
-                      <img
-                        className="card-img-top"
-                        src={item.poster}
-                        alt={item.title}
-                      />
-                    </a>
-                    <div className="card-body">
-                      <p className="card-text">{item.title}</p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })
-          ) : (
-            <h3>No Movies in the List</h3>
-          )}
-        </div>
+        <Col size="md-12">
+          <h3>{username} Movies</h3>
+        </Col>
+        <Col size="md-12">
+          <div className="card-group">
+            {userMovies.length !== 0 ? (
+              userMovies.map((item, index) => {
+                return <MovieCard movie={item} index={index} key={index} />;
+              })
+            ) : (
+              <div>
+                <hr />
+
+                <h3>No Movies Saved by {username}</h3>
+              </div>
+            )}
+          </div>
+        </Col>
+      </Row>
+      <Row>
+        <Col size="md-12">
+          <h3>All Saved Movies</h3>
+        </Col>
+        <Col size="md-12">
+          <div className="card-group">
+            {movies.length !== 0 ? (
+              movies.map((item, index) => {
+                return <MovieCard movie={item} index={index} key={index} />;
+              })
+            ) : (
+              <h3>No Movies in the List</h3>
+            )}
+          </div>
+        </Col>
       </Row>
     </Container>
   );

@@ -7,6 +7,12 @@ module.exports = {
       .then((dbMovie) => res.json(dbMovie))
       .catch((err) => res.status(422).json(err));
   },
+  findByUser: function (req, res) {
+    console.log(req.params.id);
+    db.Movie.find({ username: req.params.id })
+      .then((dbMovie) => res.json(dbMovie))
+      .catch((err) => res.status(422).json(err));
+  },
   findById: function (req, res) {
     db.Movie.findById(req.params.id)
       .then((dbMovie) => res.json(dbMovie))
