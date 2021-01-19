@@ -66,6 +66,16 @@ module.exports = {
       }
     });
   },
+  removeUser: function (req, res) {
+    const imdbID = req.body.imdbID;
+    const currentUser = req.params.id;
+    const filter = { imdbID: imdbID };
+    db.Movie.findOneAndUpdate(
+      filter,
+      { $pull: { username: currentUser } },
+      { multi: true }
+    );
+  },
   addComment: function (req, res) {
     db.Movie.updateOne(
       { _id: req.params.id },

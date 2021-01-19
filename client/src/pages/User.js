@@ -102,6 +102,17 @@ function User({ username }) {
       });
   }
 
+  function saveUserMovie(movie) {
+    API.addMovieUser(username, movie)
+      .then(() => {
+        getUserMovies();
+      })
+      .catch((err) => {
+        setErrorMessage(err);
+        console.log(errorMessage);
+      });
+  }
+
   const handleInputChange = (e) => {
     setSearchTerm(e.target.value);
   };
