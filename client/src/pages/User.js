@@ -28,7 +28,7 @@ function User({ username }) {
     if (_.isEmpty(userMovies)) {
       getUserMovies();
     }
-  }, [movies, userMovies]);
+  }, [movies]);
 
   // function loadUserByName(userName) {
   //   console.log("loadUserByName");

@@ -23,41 +23,31 @@ module.exports = {
     // if(!req.user) {
     //   return res.status(401).end("No authentication")
     // }
-    const currentUser = req.params.id;
     const imdbID = req.body.imdbID;
-    console.log("currentUser", currentUser);
-    console.log("imdbID", imdbID);
     db.Movie.findOne({ imdbID: imdbID }, (err, result) => {
       if (err) console.log(err);
       if (result) {
+        //the movie exists
         console.log("Movie already saved");
       } else {
+        //movie does not exist in mongo
         db.Movie.create({ ...req.body })
           .then((dbMovie) => {
-            console.log(dbMovie.title);
+            //add user to movie
+            console.log("Created movie", dbMovie);
+            console.log("Time to add", req.params.id);
+            db.Movie.findOneAndUpdate(
+              { _id: dbMovie._id },
+              {
+                $push: { username: req.params.id },
+              },
+              { new: true }
+            );
           })
           .then((dbMovie) => res.json(dbMovie))
           .catch((err) => res.status(401).json(err));
       }
-    }).then(
-      db.Movie.findOne({ imdbID: imdbID }, (err, result) => {
-        if (err) console.log(err);
-        console.log("line 43", result);
-        if (result.username.includes(currentUser)) {
-          console.log("User already added");
-        } else {
-          console.log("adding", currentUser);
-          db.Movie.findOne({ imdbID: imdbID }).then((dbMovie) => {
-            dbMovie
-              .updateOne({ $push: { username: currentUser } })
-              .then((dbMovie) => res.json(dbMovie))
-              .catch((err) => res.status(401).json(err));
-          });
-        }
-      })
-        .then((dbMovie) => res.json(dbMovie))
-        .catch((err) => res.status(401).json(err))
-    );
+    });
   },
   addUser: function (req, res) {
     // // require auth => skipping for now
