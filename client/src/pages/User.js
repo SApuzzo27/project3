@@ -89,8 +89,10 @@ function User({ username }) {
       imdbID: searchResult.imdbID,
     };
     API.saveMovie(username, movieData)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
+        API.addMovieUser(username, movieData);
+      })
+      .then(() => {
         getUserMovies();
         getAllMovies();
       })
