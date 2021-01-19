@@ -9,7 +9,11 @@ function MovieCard({ movie, index }) {
           rel="noopener noreferrer"
           href={`https://imdb.com/title/${movie.imdbID}`}
         >
-          <img className="card-img-top" src={movie.poster} alt={movie.title} />
+          <img
+            className="card-img-top img-fluid w-100"
+            src={movie.poster}
+            alt={movie.title}
+          />
         </a>
         <div className="card-body">
           <p className="card-text">{movie.title}</p>
