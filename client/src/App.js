@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import User from "./pages/User";
 import Groups from "./pages/Groups";
 import Other from "./pages/Other";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/groups" component={Groups} />
             <Route path="/other" component={Other} />
           </Switch>
+          <Footer/>
         </Router>
       </div>
     </>

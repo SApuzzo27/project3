@@ -117,7 +117,7 @@ h1 {
   }
 }
 
-.cards_1 {
+.cards_2 {
   top: 0;
   right: 0;
   bottom: 0;
@@ -141,6 +141,7 @@ h1 {
 .cards_wrapper_1 {
   position: relative;
   margin: 50px 0 45px;
+  left: 300px;
 }
 
 .card_items_1 {

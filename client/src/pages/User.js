@@ -126,7 +126,6 @@ function User() {
           )}
         </Col>
         <Col size="md-6">
-          <h2>Other stuff here</h2>
         </Col>
       </Row>
     </Container>
