@@ -28,8 +28,20 @@ module.exports = {
       if (err) console.log(err);
       if (result) {
         console.log("Movie already saved");
+        if (result.username.includes(req.params.id)) {
+          console.log("User already added");
+        } else {
+          db.Movie.findByIdAndUpdate(result._id, {
+            $push: { username: req.params.id },
+          }).catch((err = res.status(422).json(err)));
+        }
       } else {
         db.Movie.create({ ...req.body })
+          .then((dbMovie) => {
+            db.Movie.findByIdAndUpdate(dbMovie._id, {
+              $push: { username: req.params.id },
+            });
+          })
           .then((dbMovie) => res.json(dbMovie))
           .catch((err) => res.status(401).json(err));
       }
@@ -40,7 +52,10 @@ module.exports = {
     // if(!req.user) {
     //   return res.status(401).end("No authentication")
     // }
-    db.Movie.updateOne({ _id: req.params.id }, { $push: { userIds: req.body } })
+    db.Movie.updateOne(
+      { _id: req.params.id },
+      { $push: { username: req.body } }
+    )
       .then((dbMovie) => res.json(dbMovie))
       .catch((err) => res.status(500).json(err));
   },

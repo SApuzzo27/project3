@@ -9,11 +9,11 @@ export default {
   getAllSavedMovies: function () {
     return axios.get("/api/movie");
   },
-  saveMovie: function (movieData) {
-    return axios.post("/api/movie/create", movieData);
+  saveMovie: function (username, movieData) {
+    return axios.post("/api/movie/create/" + username, movieData);
   },
-  getSavedMoviesByUser: function () {
-    return axios.get("/api/movie/user/:id");
+  getSavedMoviesByUser: function (username) {
+    return axios.get("/api/movie/user/" + username);
   },
   getUserByName: function (username) {
     return axios.get("/api/clubuser/" + username);

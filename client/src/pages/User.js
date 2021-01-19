@@ -28,7 +28,7 @@ function User({ username }) {
     if (_.isEmpty(userMovies)) {
       getUserMovies();
     }
-  }, [movies]);
+  }, [movies, userMovies]);
 
   // function loadUserByName(userName) {
   //   console.log("loadUserByName");
@@ -52,7 +52,7 @@ function User({ username }) {
   }
 
   function getUserMovies() {
-    API.getSavedMoviesByUser()
+    API.getSavedMoviesByUser(username)
       .then((res) => {
         setUserMovies(res.data);
       })
@@ -88,9 +88,10 @@ function User({ username }) {
       type: searchResult.Type,
       imdbID: searchResult.imdbID,
     };
-    API.saveMovie(movieData)
+    API.saveMovie(username, movieData)
       .then((res) => {
         console.log(res);
+        getUserMovies();
         getAllMovies();
       })
       .catch((err) => {

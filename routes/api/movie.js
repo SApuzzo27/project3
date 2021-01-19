@@ -6,7 +6,7 @@ router.route("/").get(movieController.findAll);
 router.route("/user/:id").get(movieController.findByUser);
 router.route("/movie/:id").get(movieController.findById);
 
-router.route("/create").post(movieController.create);
+router.route("/create/:id").post(movieController.create);
 router.route("/adduser").post(movieController.addUser);
 router.route("/addcomment").post(movieController.addComment);
 
