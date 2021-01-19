@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-//import { Button } from "./Button";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
@@ -28,50 +27,63 @@ function Navbar() {
     <>
       <nav className="navbar">
         <div className="navbar-container">
-          <img
-            src="images/logocpc.png"
-            style={{ width: 60, marginTop: -4, marginRight: 200 }}
-          />
-          <div className="menu-icon" onClick={handleClick}>
-            <i className={click ? "fas fa-times" : "fas fa-bars"} />
-          </div>
-          <ul className={click ? "nav-menu active" : "nav-menu"}>
-            <li className="nav-item">
-              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/groups"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Groups
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/user" className="nav-links" onClick={closeMobileMenu}>
-                User
-              </Link>
-            </li>
+          <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+            <img
+              src="images/logocpc.png"
+              style={{ width: 60, marginTop: -36, marginRight: 200 }}
+            />
+            <div className="menu-icon" onClick={handleClick}>
+              <i className={click ? "fas fa-times" : "fas fa-bars"} />
+            </div>
+            <ul className={click ? "nav-menu active" : "nav-menu"}>
+              <li className="nav-item">
+                <Link
+                  to="groups"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  Groups
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to="/user"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  User
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to="/others"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  Sign in
+                </Link>
+              </li>
 
-            <li className="nav-item">
+              <li className="nav-item">
+                <Link
+                  to="/others"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  Sign out
+                </Link>
+              </li>
+              {/* <li className="nav-item">
               <Link
-                to="/others"
+                to="/Others"
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
-                Movies or other
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/login" className="nav-links" onClick={closeMobileMenu}>
                 Sign in
               </Link>
-            </li>
+            </li> */}
 
-            {/* <li>
+              {/* <li>
               <Link
                 to='/Others'
                 className='nav-links-mobile'
@@ -80,7 +92,8 @@ function Navbar() {
                 Sign Up
               </Link>
             </li> */}
-          </ul>
+            </ul>
+          </Link>{" "}
           {/* {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>} */}
         </div>
       </nav>
