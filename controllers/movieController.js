@@ -25,6 +25,8 @@ module.exports = {
     // }
     const currentUser = req.params.id;
     const imdbID = req.body.imdbID;
+    console.log("currentUser", currentUser);
+    console.log("imdbID", imdbID);
     db.Movie.findOne({ imdbID: imdbID }, (err, result) => {
       if (err) console.log(err);
       if (result) {
