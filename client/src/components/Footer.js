@@ -11,6 +11,7 @@ function Footer() {
         </p>
         <div className="input-areas"></div>
       </section>
+
       <section class="social-media">
         <div class="social-media-wrap">
           <div class="footer-logo"></div>
@@ -19,7 +20,7 @@ function Footer() {
             style={{ width: 100, marginTop: -4, marginRight: 800 }}
             alt=""
           />
-          <div class="social-icons"></div>
+          <div className="social-icons"></div>
         </div>
       </section>
     </div>

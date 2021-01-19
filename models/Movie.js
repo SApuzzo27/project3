@@ -21,9 +21,9 @@ const MovieSchema = new Schema(
     type: { type: String },
     imdbID: { type: String },
 
-    userIds: [
+    username: [
       {
-        type: Schema.Types.ObjectId,
+        type: Array,
         ref: "User",
       },
     ], //all the users who added the movie
@@ -38,7 +38,7 @@ const MovieSchema = new Schema(
 );
 
 MovieSchema.virtual("addedBy").get(function () {
-  return this.userIds[0];
+  return this.username[0];
 });
 
 const Movie = mongoose.model("Movie", MovieSchema);

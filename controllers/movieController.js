@@ -2,6 +2,7 @@ const db = require("../models");
 
 module.exports = {
   findAll: function (req, res) {
+    console.log(req.query);
     db.Movie.find(req.query)
       .then((dbMovie) => res.json(dbMovie))
       .catch((err) => res.status(422).json(err));
@@ -16,9 +17,17 @@ module.exports = {
     // if(!req.user) {
     //   return res.status(401).end("No authentication")
     // }
-    db.Movie.create({ ...req.body })
-      .then((dbMovie) => res.json(dbMovie))
-      .catch((err) => res.status(401).json(err));
+    const imdbID = req.body.imdbID;
+    db.Movie.findOne({ imdbID: imdbID }, (err, result) => {
+      if (err) console.log(err);
+      if (result) {
+        console.log("Movie already saved");
+      } else {
+        db.Movie.create({ ...req.body })
+          .then((dbMovie) => res.json(dbMovie))
+          .catch((err) => res.status(401).json(err));
+      }
+    });
   },
   addUser: function (req, res) {
     // // require auth => skipping for now
