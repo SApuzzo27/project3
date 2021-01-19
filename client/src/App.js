@@ -10,6 +10,9 @@ import {
 import { Container } from "./components/Grid";
 import Home from "./pages/Home";
 import Groups from "./pages/Groups";
+
+import Footer from "./components/Footer";
+
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NoMatch from "./pages/NoMatch";
@@ -21,6 +24,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 // import Comment from "./pages/Comment";
 import Navbar from "./components/Navbar";
 // import SignUp from "./components/SignUpComponents";
+
 
 function App() {
   const [userState, setUserState] = useState({});
@@ -42,6 +46,7 @@ function App() {
   }
 
   return (
+
     <Router>
       <Navbar />
       <Container>
@@ -87,7 +92,9 @@ function App() {
         </Switch>
       </Container>
       {userState.email ? <Redirect to="/user" /> : <></>}
+       <Footer/>
     </Router>
+
   );
 }
 

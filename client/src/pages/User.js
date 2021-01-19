@@ -126,6 +126,7 @@ function User() {
             <span className="badge badge-secondary"></span>
           )}
         </Col>
+
       </Row>
       <Row>
         <h3>Saved Movies</h3>
@@ -157,6 +158,7 @@ function User() {
             <h3>No Movies in the List</h3>
           )}
         </div>
+
       </Row>
     </Container>
   );

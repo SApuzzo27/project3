@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-//import { Button } from "./Button";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
@@ -28,31 +27,33 @@ function Navbar() {
     <>
       <nav className="navbar">
         <div className="navbar-container">
+        <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
           <img
-            src="images/logocpc.png"
-            style={{ width: 60, marginTop: -4, marginRight: 200 }}
+            src="images/logocpc.png"  
+            style={{ width: 60, marginTop: -36, marginRight: 200 }}
           />
           <div className="menu-icon" onClick={handleClick}>
             <i className={click ? "fas fa-times" : "fas fa-bars"} />
           </div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
+            
             <li className="nav-item">
-              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                Home
+              <Link to="groups" className="nav-links" onClick={closeMobileMenu}>
+            Groups
               </Link>
             </li>
             <li className="nav-item">
               <Link
-                to="/groups"
+                to="/user"
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
-                Groups
+                User
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/user" className="nav-links" onClick={closeMobileMenu}>
-                User
+              <Link to="/others" className="nav-links" onClick={closeMobileMenu}>
+               Sign in
               </Link>
             </li>
 
@@ -62,10 +63,10 @@ function Navbar() {
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
-                Movies or other
+                Sign out 
               </Link>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link
                 to="/Others"
                 className="nav-links"
@@ -73,7 +74,7 @@ function Navbar() {
               >
                 Sign in
               </Link>
-            </li>
+            </li> */}
 
             {/* <li>
               <Link
@@ -85,7 +86,7 @@ function Navbar() {
               </Link>
             </li> */}
           </ul>
-          {/* {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>} */}
+        </Link>  {/* {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>} */}
         </div>
       </nav>
     </>
