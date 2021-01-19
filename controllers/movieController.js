@@ -23,29 +23,39 @@ module.exports = {
     // if(!req.user) {
     //   return res.status(401).end("No authentication")
     // }
+    const currentUser = req.params.id;
     const imdbID = req.body.imdbID;
     db.Movie.findOne({ imdbID: imdbID }, (err, result) => {
       if (err) console.log(err);
       if (result) {
         console.log("Movie already saved");
-        if (result.username.includes(req.params.id)) {
-          console.log("User already added");
-        } else {
-          db.Movie.findByIdAndUpdate(result._id, {
-            $push: { username: req.params.id },
-          }).catch((err = res.status(422).json(err)));
-        }
       } else {
         db.Movie.create({ ...req.body })
           .then((dbMovie) => {
-            db.Movie.findByIdAndUpdate(dbMovie._id, {
-              $push: { username: req.params.id },
-            });
+            console.log(dbMovie.title);
           })
           .then((dbMovie) => res.json(dbMovie))
           .catch((err) => res.status(401).json(err));
       }
-    });
+    }).then(
+      db.Movie.findOne({ imdbID: imdbID }, (err, result) => {
+        if (err) console.log(err);
+        console.log("line 43", result);
+        if (result.username.includes(currentUser)) {
+          console.log("User already added");
+        } else {
+          console.log("adding", currentUser);
+          db.Movie.findOne({ imdbID: imdbID }).then((dbMovie) => {
+            dbMovie
+              .updateOne({ $push: { username: currentUser } })
+              .then((dbMovie) => res.json(dbMovie))
+              .catch((err) => res.status(401).json(err));
+          });
+        }
+      })
+        .then((dbMovie) => res.json(dbMovie))
+        .catch((err) => res.status(401).json(err))
+    );
   },
   addUser: function (req, res) {
     // // require auth => skipping for now
