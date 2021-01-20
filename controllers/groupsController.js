@@ -25,9 +25,11 @@ module.exports = {
     // if(!req.user) {
     //   return res.status(401).end("No authentication")
     // }
-    db.Group.updateOne(
-      { _id: req.params.id },
-      { $push: { username: req.body } }
+    const groupID = req.body._id;
+    const currentUser = req.params.id;
+    db.Group.findOneAndUpdate(
+      { _id: groupID },
+      { $push: { username: currentUser } }
     )
       .then((dbGroup) => res.json(dbGroup))
       .catch((err) => res.status(500).json(err));

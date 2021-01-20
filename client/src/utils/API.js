@@ -21,6 +21,12 @@ export default {
   getSavedMoviesByUser: function (username) {
     return axios.get("/api/movie/user/" + username);
   },
+  getGroups: function () {
+    return axios.get("/api/group");
+  },
+  addGroupUser: function (username, groupData) {
+    return axios.post("/api/group/addUser/" + username, groupData);
+  },
   getUserByName: function (username) {
     return axios.get("/api/clubuser/" + username);
   },
