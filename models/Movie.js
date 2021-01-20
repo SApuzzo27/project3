@@ -23,10 +23,11 @@ const MovieSchema = new Schema(
 
     username: [
       {
-        type: Array,
+        type: String,
         ref: "User",
-      },
-    ], //all the users who added the movie
+      }
+    ],
+     //all the users who added the movie
     comments: [
       {
         type: mongoose.Types.ObjectId,

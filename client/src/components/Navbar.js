@@ -27,6 +27,7 @@ function Navbar() {
     <>
       <nav className="navbar">
         <div className="navbar-container">
+   homeScreenButtons
         <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
           <img
             src="images/logocpc.png"  
@@ -67,6 +68,7 @@ function Navbar() {
               </Link>
             </li> 
             /* <li className="nav-item">
+
               <Link
                 to="/Others"
                 className="nav-links"
@@ -76,7 +78,7 @@ function Navbar() {
               </Link>
             // </li> */}
 
-            {/* <li>
+              {/* <li>
               <Link
                 to='/Others'
                 className='nav-links-mobile'
@@ -85,8 +87,9 @@ function Navbar() {
                 Sign Up
               </Link>
             </li> */}
-          </ul>
-        </Link>  {/* {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>} */}
+            </ul>
+          </Link>{" "}
+          {/* {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>} */}
         </div>
       </nav>
     </>

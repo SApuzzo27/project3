@@ -3,13 +3,14 @@ import userAPI from "../utils/userAPI";
 import {  Redirect, Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
+import "../components/Signup.css"
 
 class Signup extends Component {
   state = {
-    email: "1@1",
-    username: "one",
-    password: "1",
-    passwordConf: "1"
+    email: "",
+    username: "",
+    password: "",
+    passwordConf: ""
   };
 
   componentDidMount() {
@@ -35,7 +36,7 @@ class Signup extends Component {
         .then(res => {
           if(res.status === 200 ){
             this.props.authenticate();
-            return <Redirect to="/comments" />
+            return <Redirect to="/user" />
           }
         })
         .catch(err => console.log(err.response.data));
@@ -48,7 +49,7 @@ class Signup extends Component {
         <Row>
           <Col size="12">
  
-            <form>
+            <form className="signupForm">
               <Input
                 value={this.state.username}
                 onChange={this.handleInputChange}
@@ -65,14 +66,14 @@ class Signup extends Component {
                 value={this.state.password}
                 onChange={this.handleInputChange}
                 name="password"
-                placeholder="(required)"
+                placeholder="password(required)"
                 type="password"
               />
               <Input
                 value={this.state.passwordConf}
                 onChange={this.handleInputChange}
                 name="passwordConf"
-                placeholder="(required)"
+                placeholder="confirm password(required)"
                 type="password"
               />
               
@@ -83,8 +84,10 @@ class Signup extends Component {
                 signup
               </FormBtn>
               <Link to="/login">
-               <FormBtn> Login </FormBtn>
-             </Link>
+
+                <FormBtn> Login </FormBtn>
+              </Link>
+
             </form>
           </Col>
           
