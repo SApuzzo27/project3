@@ -19,7 +19,11 @@ function Movie({
     <div className="card movieCard" id={imdbID}>
       <div className="row">
         <div className="col-md-6">
-          <img className="card-img movieCardPoster" src={poster} alt={title} />
+          <img
+            className="card-img movieCardPoster img-fluid w-75"
+            src={poster}
+            alt={title}
+          />
         </div>
         <div className="col-md-6">
           <div className="card-body">
