@@ -82,14 +82,9 @@ function App() {
           <ProtectedRoute exact path={["/", "/movies/:id"]}>
             <Movie {...userState} />
           </ProtectedRoute>
-          <ProtectedRoute exact path={["/", "/group"]}>
+          <ProtectedRoute exact path={["/group"]}>
             <Group {...userState} />
           </ProtectedRoute>
-
-          <ProtectedRoute exact path={["/", "/groups:id"]}>
-            <Groups {...userState} />
-          </ProtectedRoute>
-
           <Route component={NoMatch} />
         </Switch>
       </Container>
