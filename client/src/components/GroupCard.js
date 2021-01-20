@@ -3,7 +3,7 @@ import Col from "./Col";
 
 function GroupCard({ group, joinGroup }) {
   return (
-    <Col size="md-3">
+    <Col size="md-4">
       <div className="card mb-3">
         <h3 className="card-header"> {group.clubName} </h3>
         <div className="card-body">
@@ -12,7 +12,10 @@ function GroupCard({ group, joinGroup }) {
             <li className="list-group-item">Dapibus ac facilisis in</li>
             <li className="list-group-item">Vestibulum at eros</li>
           </ul>
-          <button className="btn btn-dark mr-2" onClick={joinGroup}>
+          <button
+            className="btn btn-dark mr-2"
+            onClick={() => joinGroup(group)}
+          >
             Join!
           </button>
         </div>

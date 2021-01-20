@@ -59,7 +59,7 @@ function Group({ username }) {
   }
 
   const handleJoinGroup = (e) => {
-    console.log(e);
+    joinGroup(username, e);
   };
 
   return (
