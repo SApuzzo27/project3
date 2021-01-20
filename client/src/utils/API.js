@@ -9,11 +9,17 @@ export default {
   getAllSavedMovies: function () {
     return axios.get("/api/movie");
   },
-  saveMovie: function (movieData) {
-    return axios.post("/api/movie/create", movieData);
+  saveMovie: function (username, movieData) {
+    return axios.post("/api/movie/create/" + username, movieData);
   },
-  getSavedMoviesByUser: function (userId) {
-    return axios.get("/api/movie/user/:id");
+  addMovieUser: function (username, movieData) {
+    return axios.post("/api/movie/adduser/" + username, movieData);
+  },
+  removeMovieUser: function (username, movieData) {
+    return axios.delete("/api/movie/removeuser/" + username, movieData);
+  },
+  getSavedMoviesByUser: function (username) {
+    return axios.get("/api/movie/user/" + username);
   },
   getUserByName: function (username) {
     return axios.get("/api/clubuser/" + username);

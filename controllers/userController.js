@@ -9,6 +9,9 @@ module.exports = {
       username: req.user.username,
       email: req.user.email,
       comments: req.user.comments,
+      movies: req.user.movies,
+      clubName: req.user.clubName,
+      watchlist: req.user.watchlist
     });
   },
 
@@ -46,6 +49,9 @@ module.exports = {
           username: req.user.username,
           email: req.user.email,
           comments: req.user.comments,
+          movies: req.user.movies,
+          clubName: req.user.clubName,
+          watchlist: req.user.watchlist
         });
   },
   findAll: function (req, res) {
@@ -63,7 +69,7 @@ module.exports = {
     // if(!req.user) {
     //   return res.status(401).end("No authentication")
     // }
-    db.User.updateOne({ _id: req.params.id }, { $push: { clubName: req.body } })
+    db.User.updateOne({ username: req.params.id }, { $push: { clubName: req.body } })
       .then((dbUser) => res.json(dbUser))
       .catch((err) => res.status(500).json(err));
   },

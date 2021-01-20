@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const Schema = mongoose.Schema;
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new Schema({
   email: {
     type: String,
     unique: true,
@@ -9,6 +10,7 @@ const UserSchema = new mongoose.Schema({
     trim: true,
   },
   username: {
+    _id: Schema.Types.ObjectId,
     required: true,
     type: String,
     trim: true,
@@ -35,7 +37,7 @@ const UserSchema = new mongoose.Schema({
       ref: "Movies",
     },
   ],
-  clubName: {
+  Group: {
     type: mongoose.Types.ObjectId,
     ref: "Group",
   },
