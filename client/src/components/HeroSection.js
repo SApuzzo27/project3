@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import '../App.css';
 import { Button } from './Button';
 import './HeroSection.css';
+import { ButtonL } from './HeroButton';
 
 function HeroSection() {
   return (
     <div className='hero-container'>
       <video src='/videos/video-1.mp4' autoPlay loop muted />
-      <h1>Couch Potatos</h1>
+      <h1>Couch Potatoes</h1>
       <p>Welcome to the best movie club where you can find new interest in movies and more.</p>
       <div className='hero-btns'>
         <Button
@@ -18,15 +19,15 @@ function HeroSection() {
         >
           Sign up
         </Button>
-        <Button
+        <ButtonL
           className='btns'
           buttonStyle='btn--primary'
           buttonSize='btn--large'
-          onClick={console.log('hey')}
+          // onClick={console.log('hey')}
         >
           Login <i className='far fa-play-circle' />
-          <Link to="login" />
-        </Button>
+          <Link to="/login" />
+        </ButtonL>
       </div>
     </div>
   );

@@ -27,53 +27,48 @@ function Navbar() {
     <>
       <nav className="navbar">
         <div className="navbar-container">
-          <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-            <img
-              src="images/logocpc.png"
-              style={{ width: 60, marginTop: -36, marginRight: 200 }}
-            />
-            <div className="menu-icon" onClick={handleClick}>
-              <i className={click ? "fas fa-times" : "fas fa-bars"} />
-            </div>
-            <ul className={click ? "nav-menu active" : "nav-menu"}>
-              <li className="nav-item">
-                <Link
-                  to="groups"
-                  className="nav-links"
-                  onClick={closeMobileMenu}
-                >
-                  Groups
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  to="/user"
-                  className="nav-links"
-                  onClick={closeMobileMenu}
-                >
-                  User
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  to="/login"
-                  className="nav-links"
-                  onClick={closeMobileMenu}
-                >
-                  Sign in
-                </Link>
-              </li>
+   homeScreenButtons
+        <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+          <img
+            src="images/logocpc.png"  
+            style={{ width: 60, marginTop: -36, marginRight: 200 }}
+          />
+          <div className="menu-icon" onClick={handleClick}>
+            <i className={click ? "fas fa-times" : "fas fa-bars"} />
+          </div>
+          <ul className={click ? "nav-menu active" : "nav-menu"}>
+            
+            <li className="nav-item">
+              <Link to="/groups" className="nav-links" onClick={closeMobileMenu}>
+            Groups
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to="/user"
+                className="nav-links"
+                onClick={closeMobileMenu}
+              >
+                User
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/login" className="nav-links" onClick={closeMobileMenu}>
+               Login
+              </Link>
+            </li>
 
-              <li className="nav-item">
-                <Link
-                  to="/signout"
-                  className="nav-links"
-                  onClick={closeMobileMenu}
-                >
-                  Sign out
-                </Link>
-              </li>
-              {/* <li className="nav-item">
+            { <li className="nav-item">
+              <Link
+                to="/logout"
+                className="nav-links"
+                onClick={closeMobileMenu}
+              >
+                Log out 
+              </Link>
+            </li> 
+            /* <li className="nav-item">
+
               <Link
                 to="/Others"
                 className="nav-links"
@@ -81,7 +76,7 @@ function Navbar() {
               >
                 Sign in
               </Link>
-            </li> */}
+            // </li> */}
 
               {/* <li>
               <Link
