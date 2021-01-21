@@ -162,7 +162,7 @@ function User({ username }) {
           <h3>{username} Movies</h3>
         </Col>
         <Col size="md-12">
-          <div className="card-group">
+          <div className="card-group scroller">
             {userMovies.length !== 0 ? (
               userMovies.map((item, index) => {
                 return <MovieCard movie={item} index={index} key={index} />;
@@ -182,13 +182,15 @@ function User({ username }) {
           <h3>All Saved Movies</h3>
         </Col>
         <Col size="md-12">
-          <div className="card-group">
+          <div className="card-group scroller">
             {movies.length !== 0 ? (
               movies.map((item, index) => {
                 return <MovieCard movie={item} index={index} key={index} />;
               })
             ) : (
               <h3>No Movies in the List</h3>
+
+      
             )}
           </div>
         </Col>
