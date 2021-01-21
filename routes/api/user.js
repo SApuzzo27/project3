@@ -4,6 +4,7 @@ const userController = require("../../controllers/userController");
 const passport = require("../../utils/passport");
 
 // Matches with "/api/user/login"
+router.route("/:id").get(userController.findByName);
 router
   .route("/login")
   // Using the passport.authenticate middleware with our local strategy.
