@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import { Container } from "./components/Grid";
 import Home from "./pages/Home";
-import Groups from "./pages/Groups";
+//import Groups from "./pages/Groups";
 
 import Footer from "./components/Footer";
 
