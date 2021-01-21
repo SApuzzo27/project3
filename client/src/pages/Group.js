@@ -10,6 +10,7 @@ import "../App.css";
 function Group({ username }) {
   const [movies, setMovies] = useState([]);
   //const [users, setUsers] = useState([]);
+  const [user, setUser] = useState({});
   //const [userMovies, setUserMovies] = useState([]);
   const [groups, setGroups] = useState([]);
   const [currentGroup, setCurrentGroup] = "";
@@ -23,7 +24,19 @@ function Group({ username }) {
     if (_.isEmpty(groups)) {
       getAllGroups();
     }
+    if (_.isEmpty(user)) {
+      getUserByName(username);
+    }
   }, [movies]);
+
+  function getUserByName(username) {
+    API.getUserByName(username).then((res) => {
+      setUser(res.data);
+      if (username.group) {
+        setCurrentGroup(username.group);
+      }
+    });
+  }
 
   function getAllGroups() {
     API.getGroups()
