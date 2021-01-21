@@ -12,8 +12,14 @@ export default {
   getUserByName: function (username) {
     return axios.get("/api/user/" + username);
   },
+  getUserByGroupId: function (groupId) {
+    return axios.get("/api/user/group/" + groupId);
+  },
   addUserGroup: function (username, group) {
     return axios.post("/api/user/addgroup/" + username, group);
+  },
+  removeUserGroup: function (username, group) {
+    return axios.post("/api/user/removegroup/" + username, group);
   },
   saveMovie: function (username, movieData) {
     return axios.post("/api/movie/create/" + username, movieData);
@@ -35,6 +41,9 @@ export default {
   },
   addGroupUser: function (username, groupData) {
     return axios.post("/api/group/adduser/" + username, groupData);
+  },
+  removeGroupUser: function (username, groupData) {
+    return axios.post("/api/group/removeuser/" + username, groupData);
   },
   getUserByName: function (username) {
     return axios.get("/api/clubuser/" + username);

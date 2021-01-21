@@ -4,6 +4,8 @@ import Container from "../components/Container";
 import Row from "../components/Row";
 import Col from "../components/Col";
 import GroupCard from "../components/GroupCard";
+import GroupJumbotron from "../components/GroupJumbotron";
+import GroupUsers from "../components/GroupUsers";
 import API from "../utils/API";
 import "../App.css";
 
@@ -28,10 +30,11 @@ function Group({ username }) {
     if (_.isEmpty(user)) {
       getUserByName(username);
     }
+
     if (_.isEmpty(currentGroup)) {
       updateCurrentGroup();
     }
-  }, [movies, user]);
+  }, [movies, user, currentGroup]);
 
   function getUserByName(username) {
     API.getUserByName(username).then((res) => {
@@ -60,6 +63,20 @@ function Group({ username }) {
       })
       .then(() => {
         setCurrentGroup(group);
+      })
+      .catch((err) => {
+        setErrorMessage(err);
+        console.log(errorMessage);
+      });
+  }
+
+  function leaveGroup(username, group) {
+    API.removeGroupUser(username, group)
+      .then(() => {
+        API.removeUserGroup(username, group);
+      })
+      .then(() => {
+        setCurrentGroup({});
       })
       .catch((err) => {
         setErrorMessage(err);
@@ -96,26 +113,37 @@ function Group({ username }) {
     joinGroup(username, e);
   };
 
+  const handleLeaveGroup = (e) => {
+    leaveGroup(username, e);
+  };
+
   return (
     <Container>
       <Row>
         <h2>Hello, {username}</h2>
       </Row>
-      <Row>
-        {user.group ? (
-          <h3>{currentGroup.clubName} !</h3>
-        ) : (
-          groups.map((item, index) => {
+      {user.group ? (
+        <>
+          <Row>
+            <GroupJumbotron
+              group={currentGroup}
+              handleLeaveGroup={handleLeaveGroup}
+            />
+          </Row>
+          <Row>
+            {/* <GroupUsers users={users} /> */}
+            <Col size="md-6">Another Column</Col>
+          </Row>
+        </>
+      ) : (
+        <Row>
+          {groups.map((item, index) => {
             return (
               <GroupCard group={item} key={index} joinGroup={handleJoinGroup} />
             );
-          })
-        )}
-      </Row>
-      <Row>
-        <Col size="md-6">A Column</Col>
-        <Col size="md-6">Another Column</Col>
-      </Row>
+          })}
+        </Row>
+      )}
     </Container>
   );
 }

@@ -34,6 +34,20 @@ module.exports = {
       .then((dbGroup) => res.json(dbGroup))
       .catch((err) => res.status(500).json(err));
   },
+  removeUser: function (req, res) {
+    // // require auth => skipping for now
+    // if(!req.user) {
+    //   return res.status(401).end("No authentication")
+    // }
+    const groupID = req.body._id;
+    const currentUser = req.params.id;
+    db.Group.findOneAndUpdate(
+      { _id: groupID },
+      { $pull: { username: currentUser } }
+    )
+      .then((dbGroup) => res.json(dbGroup))
+      .catch((err) => res.status(500).json(err));
+  },
   addMovie: function (req, res) {
     // // require auth => skipping for now
     // if(!req.user) {

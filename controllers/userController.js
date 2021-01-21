@@ -64,6 +64,11 @@ module.exports = {
       .then((dbUser) => res.json(dbUser))
       .catch((err) => res.status(500).json(err));
   },
+  findByGroupId: function (req, res) {
+    db.User.find({ group: req.params.id })
+      .then((dbUsers) => res.json(dbUsers))
+      .catch((err) => res.status(500).json(err));
+  },
   addGroup: function (req, res) {
     // // require auth => skipping for now
     // if(!req.user) {
@@ -72,6 +77,18 @@ module.exports = {
     db.User.findOneAndUpdate(
       { username: req.params.id },
       { $set: { group: req.body._id } }
+    )
+      .then((dbUser) => res.json(dbUser))
+      .catch((err) => res.status(500).json(err));
+  },
+  removeGroup: function (req, res) {
+    // // require auth => skipping for now
+    // if(!req.user) {
+    //   return res.status(401).end("No authentication")
+    // }
+    db.User.findOneAndUpdate(
+      { username: req.params.id },
+      { $set: { group: undefined } }
     )
       .then((dbUser) => res.json(dbUser))
       .catch((err) => res.status(500).json(err));
