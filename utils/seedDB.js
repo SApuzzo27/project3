@@ -282,18 +282,7 @@ db.Comment.deleteMany({})
       .then(({ _id }) =>
         db.User.findOneAndUpdate(
           { _id: user._id },
-          { $push: { group: _id } },
-          { new: true }
-        )
-      )
-  )
-  .then((user) =>
-    db.Group.create(GroupSeeds[1])
-      // add group ref to user
-      .then(({ _id }) =>
-        db.User.findOneAndUpdate(
-          { _id: user._id },
-          { $push: { group: _id } },
+          { $set: { group: _id } },
           { new: true }
         )
       )
