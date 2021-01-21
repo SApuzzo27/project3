@@ -11,7 +11,7 @@ module.exports = {
       comments: req.user.comments,
       movies: req.user.movies,
       clubName: req.user.clubName,
-      watchlist: req.user.watchlist
+      watchlist: req.user.watchlist,
     });
   },
 
@@ -51,7 +51,7 @@ module.exports = {
           comments: req.user.comments,
           movies: req.user.movies,
           clubName: req.user.clubName,
-          watchlist: req.user.watchlist
+          watchlist: req.user.watchlist,
         });
   },
   findAll: function (req, res) {
@@ -69,7 +69,10 @@ module.exports = {
     // if(!req.user) {
     //   return res.status(401).end("No authentication")
     // }
-    db.User.updateOne({ username: req.params.id }, { $push: { clubName: req.body } })
+    db.User.findOneAndUpdate(
+      { username: req.params.id },
+      { $set: { group: req.body._id } }
+    )
       .then((dbUser) => res.json(dbUser))
       .catch((err) => res.status(500).json(err));
   },

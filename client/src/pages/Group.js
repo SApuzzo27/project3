@@ -13,11 +13,12 @@ function Group({ username }) {
   const [user, setUser] = useState({});
   //const [userMovies, setUserMovies] = useState([]);
   const [groups, setGroups] = useState([]);
-  const [currentGroup, setCurrentGroup] = "";
+  const [currentGroup, setCurrentGroup] = useState({});
   //const [groupMovies, setGroupMovies] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
+    console.log("useEffect");
     if (_.isEmpty(movies)) {
       getAllMovies();
     }
@@ -27,13 +28,16 @@ function Group({ username }) {
     if (_.isEmpty(user)) {
       getUserByName(username);
     }
-  }, [movies]);
+    if (_.isEmpty(currentGroup)) {
+      updateCurrentGroup();
+    }
+  }, [movies, user]);
 
   function getUserByName(username) {
     API.getUserByName(username).then((res) => {
       setUser(res.data);
-      if (username.group) {
-        setCurrentGroup(username.group);
+      if (user.group) {
+        updateCurrentGroup();
       }
     });
   }
@@ -51,8 +55,11 @@ function Group({ username }) {
 
   function joinGroup(username, group) {
     API.addGroupUser(username, group)
-      .then((res) => {
-        setCurrentGroup(res.data);
+      .then(() => {
+        API.addUserGroup(username, group);
+      })
+      .then(() => {
+        setCurrentGroup(group);
       })
       .catch((err) => {
         setErrorMessage(err);
@@ -71,6 +78,20 @@ function Group({ username }) {
       });
   }
 
+  function updateCurrentGroup() {
+    if (user.group) {
+      API.getGroupById(user.group)
+        .then((res) => {
+          console.log("current group", res.data);
+          setCurrentGroup(res.data);
+        })
+        .catch((err) => {
+          setErrorMessage(err);
+          console.log(errorMessage);
+        });
+    }
+  }
+
   const handleJoinGroup = (e) => {
     joinGroup(username, e);
   };
@@ -81,8 +102,8 @@ function Group({ username }) {
         <h2>Hello, {username}</h2>
       </Row>
       <Row>
-        {currentGroup ? (
-          <h3>No groups loaded !</h3>
+        {user.group ? (
+          <h3>{currentGroup.clubName} !</h3>
         ) : (
           groups.map((item, index) => {
             return (

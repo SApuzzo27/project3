@@ -3,8 +3,12 @@ const userController = require("../../controllers/userController");
 // Requiring passport as we've configured it
 const passport = require("../../utils/passport");
 
-// Matches with "/api/user/login"
+// App specific CRUD "/api/user/"
 router.route("/:id").get(userController.findByName);
+router.route("/addgroup/:id").post(userController.addGroup);
+
+// Auth specific
+// Matches with "/api/user/login"
 router
   .route("/login")
   // Using the passport.authenticate middleware with our local strategy.

@@ -6,7 +6,7 @@ module.exports = {
       .then((dbGroup) => res.json(dbGroup))
       .catch((err) => res.status(422).json(err));
   },
-  fineById: function (req, res) {
+  findById: function (req, res) {
     db.Group.findById(req.params.id)
       .then((dbGroup) => res.json(dbGroup))
       .catch((err) => res.status(422).json(err));
