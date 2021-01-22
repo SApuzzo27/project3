@@ -23,9 +23,9 @@ function Group({ username }) {
 
   useEffect(() => {
     console.log("useEffect");
-    if (_.isEmpty(movies)) {
-      getAllMovies();
-    }
+    // if (_.isEmpty(movies)) {
+    //   getAllMovies();
+    // }
     if (_.isEmpty(groups)) {
       getAllGroups();
     }
@@ -41,7 +41,7 @@ function Group({ username }) {
     }
 
     console.log("useEffect currentGroup", currentGroup);
-  }, [movies, user, currentGroup]);
+  }, [user, currentGroup]);
 
   function getUserByName(username) {
     API.getUserByName(username).then((res) => {
@@ -64,6 +64,7 @@ function Group({ username }) {
   }
 
   function getGroupMembers() {
+    console.log("getting group members");
     API.getUserByGroupId(currentGroup._id)
       .then((res) => {
         const currentMembers = res.data;
@@ -77,21 +78,21 @@ function Group({ username }) {
   }
 
   function getGroupMovies(members) {
-    let movieList = [];
     const userList = members;
+
     userList.forEach((member) => {
       API.getSavedMoviesByUser(member.username)
         .then((res) => {
-          console.log(res.data);
-          movieList.push(res.data);
-          console.log("movieList", movieList[0]);
-          setGroupMovies(movieList[0]);
+          res.data.forEach((item) => {
+            setGroupMovies((movieArray) => [...movieArray, item]);
+          });
         })
         .catch((err) => {
           setErrorMessage(err);
           console.log(errorMessage);
         });
     });
+    console.log(groupMovies);
   }
 
   function joinGroup(username, group) {
@@ -101,6 +102,7 @@ function Group({ username }) {
       })
       .then(() => {
         setCurrentGroup(group);
+        getUserByName(username);
       })
       .catch((err) => {
         setErrorMessage(err);
@@ -115,6 +117,7 @@ function Group({ username }) {
       })
       .then(() => {
         setCurrentGroup({});
+        getUserByName(username);
       })
       .catch((err) => {
         setErrorMessage(err);
@@ -122,16 +125,16 @@ function Group({ username }) {
       });
   }
 
-  function getAllMovies() {
-    API.getAllSavedMovies()
-      .then((res) => {
-        setMovies(res.data);
-      })
-      .catch((err) => {
-        setErrorMessage(err);
-        console.log(errorMessage);
-      });
-  }
+  // function getAllMovies() {
+  //   API.getAllSavedMovies()
+  //     .then((res) => {
+  //       setMovies(res.data);
+  //     })
+  //     .catch((err) => {
+  //       setErrorMessage(err);
+  //       console.log(errorMessage);
+  //     });
+  // }
 
   function updateCurrentGroup() {
     if (user.group) {
