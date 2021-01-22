@@ -16,6 +16,7 @@ function Group({ username }) {
   //const [userMovies, setUserMovies] = useState([]);
   const [groups, setGroups] = useState([]);
   const [currentGroup, setCurrentGroup] = useState({});
+  const [groupMembers, setGroupMembers] = useState([]);
   //const [groupMovies, setGroupMovies] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -34,6 +35,7 @@ function Group({ username }) {
     if (_.isEmpty(currentGroup)) {
       updateCurrentGroup();
     }
+    console.log("useEffect currentGroup", currentGroup);
   }, [movies, user, currentGroup]);
 
   function getUserByName(username) {
@@ -63,6 +65,7 @@ function Group({ username }) {
       })
       .then(() => {
         setCurrentGroup(group);
+        setGroupMembers(group.username);
       })
       .catch((err) => {
         setErrorMessage(err);
@@ -101,6 +104,8 @@ function Group({ username }) {
         .then((res) => {
           console.log("current group", res.data);
           setCurrentGroup(res.data);
+          setGroupMembers(res.data.username);
+          console.log("current group username", res.data.username);
         })
         .catch((err) => {
           setErrorMessage(err);
@@ -131,7 +136,8 @@ function Group({ username }) {
             />
           </Row>
           <Row>
-            {/* <GroupUsers users={users} /> */}
+            <GroupUsers members={groupMembers} />
+
             <Col size="md-6">Another Column</Col>
           </Row>
         </>

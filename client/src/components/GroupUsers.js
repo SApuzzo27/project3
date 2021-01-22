@@ -8,7 +8,7 @@ function GroupUsers({ members }) {
         {members.map((item, index) => {
           return (
             <li className="list-group-item list-group-item-dark" key={index}>
-              {item.userName}
+              {item}
             </li>
           );
         })}
