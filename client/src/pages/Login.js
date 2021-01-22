@@ -37,6 +37,10 @@ class Login extends Component {
         .catch(err => console.log(err));
     }
   };
+    refreshPage = event => {
+    event.preventDefault();
+    window.location.reload();
+  }
 
   render() {
     return (

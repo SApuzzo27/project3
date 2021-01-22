@@ -25,6 +25,16 @@ app.use(session(sessionOptions));
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.get('/loginfail', function(req, res){
+    res.json(403, {message: 'Invalid username/password'});
+});
+
+app.post('/login',
+    passport.authenticate('local', { failureRedirect: '/loginfail', failureFlash: true }),
+    function(req, res) {
+       res.redirect('/login');
+});
+
 // Add routes, both API and view
 app.use(routes);
 
