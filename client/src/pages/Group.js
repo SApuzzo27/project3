@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import _ from "lodash";
 import Container from "../components/Container";
 import Row from "../components/Row";
-import Col from "../components/Col";
+//import Col from "../components/Col";
 import GroupCard from "../components/GroupCard";
 import GroupJumbotron from "../components/GroupJumbotron";
 import GroupUsers from "../components/GroupUsers";
+import GroupMovies from "../components/GroupMovies";
 import API from "../utils/API";
 import "../App.css";
 
@@ -17,7 +18,7 @@ function Group({ username }) {
   const [groups, setGroups] = useState([]);
   const [currentGroup, setCurrentGroup] = useState({});
   const [groupMembers, setGroupMembers] = useState([]);
-  //const [groupMovies, setGroupMovies] = useState([]);
+  const [groupMovies, setGroupMovies] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
@@ -35,6 +36,10 @@ function Group({ username }) {
     if (_.isEmpty(currentGroup)) {
       updateCurrentGroup();
     }
+    if (!_.isEmpty(currentGroup)) {
+      getGroupMembers();
+    }
+
     console.log("useEffect currentGroup", currentGroup);
   }, [movies, user, currentGroup]);
 
@@ -58,6 +63,37 @@ function Group({ username }) {
       });
   }
 
+  function getGroupMembers() {
+    API.getUserByGroupId(currentGroup._id)
+      .then((res) => {
+        const currentMembers = res.data;
+        setGroupMembers(currentMembers);
+        getGroupMovies(currentMembers);
+      })
+      .catch((err) => {
+        setErrorMessage(err);
+        console.log(errorMessage);
+      });
+  }
+
+  function getGroupMovies(members) {
+    let movieList = [];
+    const userList = members;
+    userList.forEach((member) => {
+      API.getSavedMoviesByUser(member.username)
+        .then((res) => {
+          console.log(res.data);
+          movieList.push(res.data);
+          console.log("movieList", movieList[0]);
+          setGroupMovies(movieList[0]);
+        })
+        .catch((err) => {
+          setErrorMessage(err);
+          console.log(errorMessage);
+        });
+    });
+  }
+
   function joinGroup(username, group) {
     API.addGroupUser(username, group)
       .then(() => {
@@ -65,7 +101,6 @@ function Group({ username }) {
       })
       .then(() => {
         setCurrentGroup(group);
-        setGroupMembers(group.username);
       })
       .catch((err) => {
         setErrorMessage(err);
@@ -104,7 +139,6 @@ function Group({ username }) {
         .then((res) => {
           console.log("current group", res.data);
           setCurrentGroup(res.data);
-          setGroupMembers(res.data.username);
           console.log("current group username", res.data.username);
         })
         .catch((err) => {
@@ -138,7 +172,7 @@ function Group({ username }) {
           <Row>
             <GroupUsers members={groupMembers} />
 
-            <Col size="md-6">Another Column</Col>
+            <GroupMovies movies={groupMovies} />
           </Row>
         </>
       ) : (

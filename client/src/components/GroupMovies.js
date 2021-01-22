@@ -1,14 +1,14 @@
 import React from "react";
 import Col from "./Col";
 
-function GroupUsers({ members }) {
+function GroupMovies({ movies }) {
   return (
     <Col size="md-6">
       <ul className="list-group">
-        {members.map((item, index) => {
+        {movies.map((item, index) => {
           return (
             <li className="list-group-item list-group-item-dark" key={index}>
-              {item.username}
+              {item.title}
             </li>
           );
         })}
@@ -17,4 +17,4 @@ function GroupUsers({ members }) {
   );
 }
 
-export default GroupUsers;
+export default GroupMovies;
