@@ -11,7 +11,7 @@ function HeroSection() {
       <video src="/videos/popcorn.mp4" autoPlay loop muted />
       <h1>Welcome All Couch Potatoes</h1>
       <p>
-        Create an Account Where You Can Be the True Movie Critic You Are - Save Movies, Review Movies, Join Groups, and Link with Link Minded Potatoes. 
+        Create an Account Where You Can Be the True Movie Critic You Are - Save Movies, Review Movies, Join Groups, and Link with Like Minded Potatoes. 
       </p>
       <div className="hero-btns">
         <Button

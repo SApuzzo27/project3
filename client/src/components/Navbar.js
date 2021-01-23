@@ -27,12 +27,9 @@ function Navbar({ handleLogoutSubmit }) {
     <>
       <nav className="navbar">
         <div className="navbar-container">
-          The Couch Potato Club
+          
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-            <img
-              src="images/logocpc.png"
-              style={{ width: 60, marginTop: -36, marginRight: 200 }}
-            />
+            The Couch Potato Club
           </Link>
           <div className="menu-icon" onClick={handleClick}>
             <i className={click ? "fas fa-times" : "fas fa-bars"} />
