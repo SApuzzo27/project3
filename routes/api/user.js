@@ -26,4 +26,10 @@ router
   // Route for getting some data about our user to be used client side
   .post(userController.authenticate);
 
+// App specific CRUD "/api/user/"
+router.route("/:id").get(userController.findByName);
+router.route("/group/:id").get(userController.findByGroupId);
+router.route("/addgroup/:id").post(userController.addGroup);
+router.route("/removegroup/:id").post(userController.removeGroup);
+
 module.exports = router;
