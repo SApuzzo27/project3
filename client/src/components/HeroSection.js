@@ -8,11 +8,10 @@ import { ButtonL } from "./HeroButton";
 function HeroSection() {
   return (
     <div className="hero-container">
-      <video src="/videos/video-1.mp4" autoPlay loop muted />
-      <h1>Couch Potatos</h1>
+      <video src="/videos/popcorn.mp4" autoPlay loop muted />
+      <h1>Welcome All Couch Potatoes</h1>
       <p>
-        Welcome to the best movie club where you can find new interest in movies
-        and more.
+        Create an Account Where You Can Be the True Movie Critic You Are - Save Movies, Review Movies, Join Groups, and Link with Link Minded Potatoes. 
       </p>
       <div className="hero-btns">
         <Button
