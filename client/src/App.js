@@ -24,7 +24,6 @@ import ProtectedRoute from "./components/ProtectedRoute";
 // import Comments from "./pages/Comments";
 // import Comment from "./pages/Comment";
 import Navbar from "./components/Navbar";
-// import SignUp from "./components/SignUpComponents";
 
 function App() {
   const [userState, setUserState] = useState({});
@@ -36,12 +35,9 @@ function App() {
 
   const handleLogoutSubmit = event => {
     // event.preventDefault();
-    try {
-        if (userState) {
-            setUserState({});
-            return <Redirect to="/login" />
-        }
-    } catch (e) { console.log(e) }
+    return userAPI.logout(userState)
+        .then(window.location.replace("/"))
+        .catch(err => console.log(err));
 };
 
   //user authentication

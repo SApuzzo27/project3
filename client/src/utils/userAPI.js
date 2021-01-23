@@ -10,7 +10,7 @@ export default {
   authenticateUser: function () {
     return axios.post("/api/user/authenticate/")
   },
-  logoutUser: function () {
-    return axios.post("/api/user/logout")
+  logout: function (user) {
+    return axios.get("/api/user/logout", user)
   }
 };
