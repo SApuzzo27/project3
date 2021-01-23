@@ -12,9 +12,11 @@ function Footer() {
         <div className="input-areas"></div>
       </section>
 
+
       <section class="social-media">
         {/* <div class="social-media-wrap">
         </div> */}
+
       </section>
     </div>
   );

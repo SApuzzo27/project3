@@ -6,7 +6,7 @@ module.exports = {
       .then((dbGroup) => res.json(dbGroup))
       .catch((err) => res.status(422).json(err));
   },
-  fineById: function (req, res) {
+  findById: function (req, res) {
     db.Group.findById(req.params.id)
       .then((dbGroup) => res.json(dbGroup))
       .catch((err) => res.status(422).json(err));
@@ -25,9 +25,25 @@ module.exports = {
     // if(!req.user) {
     //   return res.status(401).end("No authentication")
     // }
-    db.Group.updateOne(
-      { _id: req.params.id },
-      { $push: { username: req.body } }
+    const groupID = req.body._id;
+    const currentUser = req.params.id;
+    db.Group.findOneAndUpdate(
+      { _id: groupID },
+      { $push: { username: currentUser } }
+    )
+      .then((dbGroup) => res.json(dbGroup))
+      .catch((err) => res.status(500).json(err));
+  },
+  removeUser: function (req, res) {
+    // // require auth => skipping for now
+    // if(!req.user) {
+    //   return res.status(401).end("No authentication")
+    // }
+    const groupID = req.body._id;
+    const currentUser = req.params.id;
+    db.Group.findOneAndUpdate(
+      { _id: groupID },
+      { $pull: { username: currentUser } }
     )
       .then((dbGroup) => res.json(dbGroup))
       .catch((err) => res.status(500).json(err));
