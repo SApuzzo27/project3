@@ -17,13 +17,13 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NoMatch from "./pages/NoMatch";
 import User from "./pages/User";
+import Group from "./pages/Group";
 import Movie from "./pages/MovieSearch";
 import userAPI from "./utils/userAPI";
 import ProtectedRoute from "./components/ProtectedRoute";
 // import Comments from "./pages/Comments";
 // import Comment from "./pages/Comment";
 import Navbar from "./components/Navbar";
-
 
 function App() {
   const [userState, setUserState] = useState({});
@@ -33,12 +33,13 @@ function App() {
     authenticate();
   }, []);
 
-  const handleLogoutSubmit = event => {
+  const handleLogoutSubmit = (event) => {
     // event.preventDefault();
-    return userAPI.logout(userState)
-        .then(window.location.replace("/"))
-        .catch(err => console.log(err));
-};
+    return userAPI
+      .logout(userState)
+      .then(window.location.replace("/"))
+      .catch((err) => console.log(err));
+  };
 
   //user authentication
   function authenticate() {
@@ -52,9 +53,8 @@ function App() {
   }
 
   return (
-
     <Router>
-      <Navbar handleLogoutSubmit={handleLogoutSubmit}/>
+      <Navbar handleLogoutSubmit={handleLogoutSubmit} />
       <Container>
         <Switch>
           <Route exact path={["/"]}>
@@ -90,17 +90,16 @@ function App() {
             <Movie {...userState} />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path={["/", "/groups:id"]}>
-            <Groups {...userState} />
+          <ProtectedRoute exact path={["/", "/group"]}>
+            <Group {...userState} />
           </ProtectedRoute>
 
           <Route component={NoMatch} />
         </Switch>
       </Container>
       {userState.email ? <Redirect to="/user" /> : <></>}
-       <Footer/>
+      <Footer />
     </Router>
-
   );
 }
 
