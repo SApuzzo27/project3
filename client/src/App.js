@@ -34,6 +34,16 @@ function App() {
     authenticate();
   }, []);
 
+  const handleLogoutSubmit = event => {
+    // event.preventDefault();
+    try {
+        if (userState) {
+            setUserState({});
+            return <Redirect to="/login" />
+        }
+    } catch (e) { console.log(e) }
+};
+
   //user authentication
   function authenticate() {
     return userAPI
@@ -47,7 +57,7 @@ function App() {
 
   return (
     <Router>
-      <Navbar />
+      <Navbar handleLogoutSubmit={handleLogoutSubmit}/>
       <Container>
         <Switch>
           <Route exact path={["/"]}>

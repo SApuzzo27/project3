@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
-function Navbar() {
+function Navbar({ handleLogoutSubmit }) {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
@@ -58,7 +58,10 @@ function Navbar() {
               <Link
                 to="/signout"
                 className="nav-links"
-                onClick={closeMobileMenu}
+                onClick={() => {
+                  closeMobileMenu();
+                  handleLogoutSubmit();
+                }}
               >
                 Sign out
               </Link>
