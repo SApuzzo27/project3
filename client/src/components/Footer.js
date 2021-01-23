@@ -1,13 +1,17 @@
 import React from "react";
 import "./Footer.css";
-import Row from "./Row";
-//import { Link } from "react-router-dom";
+
+
 
 function Footer() {
   return (
     <div className="footer">
       <footer className="footer">
-        <div className="col-lg-12 text-center footertext">
+            <img className="footerLogo"
+              src="images/logocpc.png"
+            />
+    
+        <div className="col-lg-12  footertext">
           <strong>Wilmar S.</strong> <strong>Samantha A.</strong>{" "}
           <strong>Cielle C.</strong> <strong>Carlos O.</strong>
           <br />

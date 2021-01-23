@@ -13,7 +13,16 @@
 
 .footertext {
   margin-top: 2%;
+  margin-left: 25%;
   display: inline;
   align-items: center;
   color: white;
+}
+
+.footerLogo {
+  margin-left: 10%;
+  height: 80px;
+  width: 80px;
+  font-size: 2rem;
+  align-items: center;
 }
