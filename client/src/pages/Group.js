@@ -63,7 +63,7 @@ function Group({ username }) {
       });
   }
 
-  function getGroupMembers() {
+  const getGroupMembers = () => {
     console.log("getting group members");
     API.getUserByGroupId(currentGroup._id)
       .then((res) => {
@@ -75,9 +75,9 @@ function Group({ username }) {
         setErrorMessage(err);
         console.log(errorMessage);
       });
-  }
+  };
 
-  function getGroupMovies(members) {
+  const getGroupMovies = (members) => {
     const userList = members;
 
     userList.forEach((member) => {
@@ -93,7 +93,7 @@ function Group({ username }) {
         });
     });
     console.log(groupMovies);
-  }
+  };
 
   function joinGroup(username, group) {
     API.addGroupUser(username, group)

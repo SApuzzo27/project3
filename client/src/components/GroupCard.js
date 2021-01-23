@@ -8,9 +8,16 @@ function GroupCard({ group, joinGroup }) {
         <h3 className="card-header"> {group.clubName} </h3>
         <div className="card-body">
           <ul className="list-group list-group-flush">
-            <li className="list-group-item">Cras justo odio</li>
-            <li className="list-group-item">Dapibus ac facilisis in</li>
-            <li className="list-group-item">Vestibulum at eros</li>
+            <li className="list-group-item list-group-item-success d-flex justify-content-between align-items-right">
+              {" "}
+              {group.clubName} movie Goes here!{" "}
+            </li>
+            <li className="list-group-item list-group-item-warning d-flex justify-content-between align-items-right">
+              {group.clubName} movie Goes here!{" "}
+            </li>
+            <li className="list-group-item list-group-item-danger d-flex justify-content-between align-items-right">
+              {group.clubName} movie Goes here!{" "}
+            </li>
           </ul>
           <button
             className="btn btn-dark mr-2"
