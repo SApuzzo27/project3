@@ -8,12 +8,13 @@ function SearchForm(props) {
         <div className="form-group">
           <label htmlFor="Search">Search:</label>
           <input
+          style={{color:"white"}}
             className="form-control"
             onChange={props.handleInputChange}
             value={props.q}
             name="search"
             type="text"
-            placeholder="Search For a Movie"
+            placeholder="Search For a Movie" style={{color:"white"}}
             id="search"
             required
           />
