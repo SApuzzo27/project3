@@ -4,7 +4,7 @@ import Col from "./Col";
 function GroupUsers({ members }) {
   return (
     <Col size="md-6">
-      <ul className="list-group scroller">
+      <ul className="list-group groupPageScrollers">
         {members.map((item, index) => {
           return (
             <li className="list-group-item list-group-item-dark" key={index}>

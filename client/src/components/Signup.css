@@ -1,9 +1,10 @@
 .signupForm {
-        border: 5px solid navy;
+        border: 5px solid rgb(5, 5, 93);;
         margin-top: 10%;
         margin-left: 25%;
         margin-right: 25%;
         padding: 5pt 5pt 5pt 5pt;
         text-align: center;
+        background-color: white;
     
     }

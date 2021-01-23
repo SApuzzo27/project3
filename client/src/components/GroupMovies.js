@@ -4,7 +4,7 @@ import Col from "./Col";
 function GroupMovies({ movies }) {
   return (
     <Col size="md-6">
-      <ul className="list-group scroller">
+      <ul className="list-group scroller groupPageScrollers">
         {movies.map((item, index) => {
           return (
             <li
