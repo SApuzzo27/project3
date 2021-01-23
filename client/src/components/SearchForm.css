@@ -1,8 +1,10 @@
 .movieSearchForm {
-  margin: auto;
+  margin-top: 35%;
+ 
 }
 
 .searhContainer {
+
   border-width: 1px;
   border-style: inset;
 }

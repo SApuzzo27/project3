@@ -6,12 +6,12 @@ import Row from "./Row";
 function Footer() {
   return (
     <div className="footer">
-      <footer className="footer bg-dark text-white m-auto p-3 col-sm-12">
-        <div className="col-lg-12 text-center">
+      <footer className="footer">
+        <div className="col-lg-12 text-center footertext">
           <strong>Wilmar S.</strong> <strong>Samantha A.</strong>{" "}
           <strong>Cielle C.</strong> <strong>Carlos O.</strong>
           <br />
-          <span className="text-muted"> Copyright &copy; 2021 </span>
+          <span> Copyright &copy; 2021 </span>
         </div>
       </footer>
     </div>
