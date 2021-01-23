@@ -182,7 +182,7 @@ function User({ username }) {
           <h3>All Saved Movies</h3>
         </Col>
         <Col size="md-12">
-          <div className="card-group scroller">
+          <div className="card-group scroller groupscroller">
             {movies.length !== 0 ? (
               movies.map((item, index) => {
                 return <MovieCard movie={item} index={index} key={index} />;
