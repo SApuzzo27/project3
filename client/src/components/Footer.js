@@ -7,22 +7,16 @@ function Footer() {
     <div className="footer-container">
       <section className="footer-subscription">
         <p className="footer-subscription-heading">
-          <strong>Wilmar S.</strong> <strong>Samantha A.</strong>{" "}
-          <strong>Cielle C.</strong> <strong>Carlos O.</strong>
+          <strong>Wilmar S.</strong> <strong>Samantha A.</strong> <strong>Cielle C.</strong> <strong>Carlos O.</strong>
         </p>
         <div className="input-areas"></div>
       </section>
 
-      <section className="social-media">
-        <div className="social-media-wrap">
-          <div className="footer-logo"></div>
-          <img
-            src="images/logocpc.png"
-            style={{ width: 100, marginTop: -4, marginRight: 800 }}
-            alt=""
-          />
-          <div className="social-icons"></div>
-        </div>
+
+      <section class="social-media">
+        {/* <div class="social-media-wrap">
+        </div> */}
+
       </section>
     </div>
   );
