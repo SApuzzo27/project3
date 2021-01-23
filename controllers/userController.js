@@ -11,7 +11,7 @@ module.exports = {
       comments: req.user.comments,
       movies: req.user.movies,
       clubName: req.user.clubName,
-      watchlist: req.user.watchlist,
+      watchlist: req.user.watchlist
     });
   },
 
@@ -51,7 +51,7 @@ module.exports = {
           comments: req.user.comments,
           movies: req.user.movies,
           clubName: req.user.clubName,
-          watchlist: req.user.watchlist,
+          watchlist: req.user.watchlist
         });
   },
   findAll: function (req, res) {
@@ -64,32 +64,12 @@ module.exports = {
       .then((dbUser) => res.json(dbUser))
       .catch((err) => res.status(500).json(err));
   },
-  findByGroupId: function (req, res) {
-    db.User.find({ group: req.params.id })
-      .then((dbUsers) => res.json(dbUsers))
-      .catch((err) => res.status(500).json(err));
-  },
   addGroup: function (req, res) {
     // // require auth => skipping for now
     // if(!req.user) {
     //   return res.status(401).end("No authentication")
     // }
-    db.User.findOneAndUpdate(
-      { username: req.params.id },
-      { $set: { group: req.body._id } }
-    )
-      .then((dbUser) => res.json(dbUser))
-      .catch((err) => res.status(500).json(err));
-  },
-  removeGroup: function (req, res) {
-    // // require auth => skipping for now
-    // if(!req.user) {
-    //   return res.status(401).end("No authentication")
-    // }
-    db.User.findOneAndUpdate(
-      { username: req.params.id },
-      { $set: { group: undefined } }
-    )
+    db.User.updateOne({ username: req.params.id }, { $push: { clubName: req.body } })
       .then((dbUser) => res.json(dbUser))
       .catch((err) => res.status(500).json(err));
   },

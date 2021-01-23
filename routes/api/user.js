@@ -3,13 +3,6 @@ const userController = require("../../controllers/userController");
 // Requiring passport as we've configured it
 const passport = require("../../utils/passport");
 
-// App specific CRUD "/api/user/"
-router.route("/:id").get(userController.findByName);
-router.route("/group/:id").get(userController.findByGroupId);
-router.route("/addgroup/:id").post(userController.addGroup);
-router.route("/removegroup/:id").post(userController.removeGroup);
-
-// Auth specific
 // Matches with "/api/user/login"
 router
   .route("/login")

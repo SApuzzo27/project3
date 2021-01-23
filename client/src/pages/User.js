@@ -189,6 +189,8 @@ function User({ username }) {
               })
             ) : (
               <h3>No Movies in the List</h3>
+
+      
             )}
           </div>
         </Col>

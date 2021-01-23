@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
-function Navbar({ handleLogoutSubmit }) {
+
+function Navbar({handleLogoutSubmit}) {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
@@ -27,46 +28,50 @@ function Navbar({ handleLogoutSubmit }) {
     <>
       <nav className="navbar">
         <div className="navbar-container">
-          The Couch Potato Club
-          <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-            <img
-              src="images/logocpc.png"
-              style={{ width: 60, marginTop: -36, marginRight: 200 }}
-            />
-          </Link>
+        The Couch Potato Club
+        <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+          <img
+            src="images/logocpc.png"  
+            style={{ width: 60, marginTop: -36, marginRight: 200 }}
+          />
           <div className="menu-icon" onClick={handleClick}>
             <i className={click ? "fas fa-times" : "fas fa-bars"} />
           </div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
+            
             <li className="nav-item">
-              <Link to="/group" className="nav-links" onClick={closeMobileMenu}>
-                Group
+              <Link to="/groups" className="nav-links" onClick={closeMobileMenu}>
+            Groups
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/user" className="nav-links" onClick={closeMobileMenu}>
+              <Link
+                to="/user"
+                className="nav-links"
+                onClick={closeMobileMenu}
+              >
                 My Page
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/login" className="nav-links" onClick={closeMobileMenu}>
-                Sign in
+                Log In
               </Link>
             </li>
 
-            <li className="nav-item">
+            { <li className="nav-item">
               <Link
-                to="/signout"
+                to="/"
                 className="nav-links"
-                onClick={() => {
-                  closeMobileMenu();
-                  handleLogoutSubmit();
-                }}
+                onClick={()=>{
+                  closeMobileMenu(); 
+                  handleLogoutSubmit();}}
               >
-                Sign out
+                Log Out 
               </Link>
-            </li>
-            {/* <li className="nav-item">
+            </li> 
+            /* <li className="nav-item">
+
               <Link
                 to="/Others"
                 className="nav-links"
@@ -76,7 +81,7 @@ function Navbar({ handleLogoutSubmit }) {
               </Link>
             // </li> */}
 
-            {/* <li>
+              {/* <li>
               <Link
                 to='/Others'
                 className='nav-links-mobile'
@@ -85,7 +90,8 @@ function Navbar({ handleLogoutSubmit }) {
                 Sign Up
               </Link>
             </li> */}
-          </ul>
+            </ul>
+          </Link>{" "}
           {/* {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>} */}
         </div>
       </nav>
