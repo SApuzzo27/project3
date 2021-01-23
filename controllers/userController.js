@@ -64,6 +64,11 @@ module.exports = {
       .then((dbUser) => res.json(dbUser))
       .catch((err) => res.status(500).json(err));
   },
+  findByGroupId: function (req, res) {
+    db.User.find({ group: req.params.id })
+      .then((dbUsers) => res.json(dbUsers))
+      .catch((err) => res.status(500).json(err));
+  },
   addGroup: function (req, res) {
     // // require auth => skipping for now
     // if(!req.user) {

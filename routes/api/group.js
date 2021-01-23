@@ -3,7 +3,7 @@ const groupController = require("../../controllers/groupsController");
 
 // Matches with "/api/group"
 router.route("/").get(groupController.findAll);
-router.route("/:id").get(groupController.fineById);
+router.route("/:id").get(groupController.findById);
 
 router.route("/adduser/:id").post(groupController.addUser);
 router.route("/removeuser/:id").post(groupController.removeUser);
