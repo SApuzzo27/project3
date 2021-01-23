@@ -6,7 +6,7 @@
 
   Deployed at: https://fathomless-tor-50802.herokuapp.com/
 
-[]!(https://fathomless-tor-50802.herokuapp.com/)
+[]!(https://github.com/SApuzzo27/project3/blob/main/client/public/images/CouchPotatoesAppPage.png)
   ## Description 
   Couch Potato is a movie app that after user authentication allows you to go to your home page holding saved movies from the omd api. Couch Potato also allows you to join movie groups and see what other users in your group has saved. 
 
