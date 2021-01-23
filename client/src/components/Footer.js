@@ -1,23 +1,19 @@
 import React from "react";
 import "./Footer.css";
+import Row from "./Row";
 //import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <div className="footer-container">
-      <section className="footer-subscription">
-        <p className="footer-subscription-heading">
-          <strong>Wilmar S.</strong> <strong>Samantha A.</strong> <strong>Cielle C.</strong> <strong>Carlos O.</strong>
-        </p>
-        <div className="input-areas"></div>
-      </section>
-
-
-      <section class="social-media">
-        {/* <div class="social-media-wrap">
-        </div> */}
-
-      </section>
+    <div className="footer">
+      <footer className="footer bg-dark text-white m-auto p-3 col-sm-12">
+        <div className="col-lg-12 text-center">
+          <strong>Wilmar S.</strong> <strong>Samantha A.</strong>{" "}
+          <strong>Cielle C.</strong> <strong>Carlos O.</strong>
+          <br />
+          <span className="text-muted"> Copywrite &copy; 2020 </span>
+        </div>
+      </footer>
     </div>
   );
 }

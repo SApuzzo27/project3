@@ -21,19 +21,19 @@
   margin-bottom: -320px;
   margin-top: -25%;
   padding: 24px;
-  color:white;
+  color: white;
 }
 
 .footer-subscription > p {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .footer-subscription-heading {
+  display: flex;
   margin-bottom: 5px;
   font-size: 16px;
   padding-top: 8%;
-
 }
 
 .footer-subscription-text {
@@ -141,4 +141,10 @@
 }
 
 @media screen and (max-width: 768px) {
+}
+
+.footer {
+  bottom: 0;
+  width: 100%;
+  position: fixed;
 }
