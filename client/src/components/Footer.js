@@ -11,7 +11,7 @@ function Footer() {
           <strong>Wilmar S.</strong> <strong>Samantha A.</strong>{" "}
           <strong>Cielle C.</strong> <strong>Carlos O.</strong>
           <br />
-          <span className="text-muted"> Copywrite &copy; 2020 </span>
+          <span className="text-muted"> Copyright &copy; 2021 </span>
         </div>
       </footer>
     </div>
