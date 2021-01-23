@@ -37,7 +37,7 @@ const UserSchema = new Schema({
       ref: "Movies",
     },
   ],
-  group: {
+  Group: {
     type: mongoose.Types.ObjectId,
     ref: "Group",
   },

@@ -14,7 +14,7 @@ function Footer() {
       </section>
 
       <section className="social-media">
-        <div className="social-media-wrap">
+        <div classname="social-media-wrap">
           <div className="footer-logo"></div>
           <img
             src="images/logocpc.png"

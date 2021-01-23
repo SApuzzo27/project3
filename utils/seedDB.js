@@ -65,7 +65,7 @@ const GroupSeeds = [
   },
   {
     clubName: "Saturday Night",
-    username: "JaneDoe",
+    username: "JaneDoe"
   },
 ];
 
@@ -275,19 +275,30 @@ db.Comment.deleteMany({})
         )
       )
   )
-  // add group to user
-  .then((user) =>
-    db.Group.create(GroupSeeds[0])
-      // add group ref to user
-      .then(({ _id }) =>
-        db.User.findOneAndUpdate(
-          { _id: user._id },
-          { $set: { group: _id } },
-          { new: true }
+// add group to user 
+      .then((user) =>
+      db.Group.create(GroupSeeds[0])
+        // add group ref to user
+        .then(({ _id }) =>
+          db.User.findOneAndUpdate(
+            { _id: user._id },
+            { $push: { Group: _id } },
+            { new: true }
+          )
         )
       )
-  )
-
+      .then((user) =>
+      db.Group.create(GroupSeeds[1])
+        // add group ref to user
+        .then(({ _id }) =>
+          db.User.findOneAndUpdate(
+            { _id: user._id },
+            { $push: { group: _id } },
+            { new: true }
+          )
+        )
+    )
+    
   .then(() => {
     process.exit(0);
   })
