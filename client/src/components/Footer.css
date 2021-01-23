@@ -6,5 +6,6 @@
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
   "Lucida Sans", Arial, sans-serif;
   background-color: black;
+  border-top: 5px solid navy;
   color: white;
 }
