@@ -50,20 +50,20 @@ function Navbar({ handleLogoutSubmit }) {
             </li>
             <li className="nav-item">
               <Link to="/login" className="nav-links" onClick={closeMobileMenu}>
-                Sign in
+                Log in
               </Link>
             </li>
 
             <li className="nav-item">
               <Link
-                to="/signout"
+                to="/logout"
                 className="nav-links"
                 onClick={() => {
                   closeMobileMenu();
                   handleLogoutSubmit();
                 }}
               >
-                Sign out
+                Log out
               </Link>
             </li>
             {/* <li className="nav-item">

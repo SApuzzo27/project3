@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../App.css";
 import { Button } from "./Button";
 import "./HeroSection.css";
+import { ButtonL } from "./HeroButton";
 
 function HeroSection() {
   return (
@@ -21,14 +22,14 @@ function HeroSection() {
         >
           Sign up
         </Button>
-        <Button
+        <ButtonL
           className="btns"
           buttonStyle="btn--primary"
           buttonSize="btn--large"
           onClick={console.log("hey")}
         >
           Login <i className="far fa-play-circle" />
-        </Button>
+        </ButtonL>
       </div>
     </div>
   );
