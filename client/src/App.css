@@ -49,6 +49,14 @@ body {
   font-size: 100px;
 }
 
+.groupCard {
+  border: 5px solid rgba(221, 190, 17, 0.849);
+}
+
+.groupJumbo {
+  border: 5px solid rgba(221, 190, 17, 0.849);
+}
+
 .scroller {
   width: 100%;
   height: 350px;
@@ -81,3 +89,4 @@ body {
   padding: 5pt 5pt 5pt 5pt;
   background-color: white;
 }
+
