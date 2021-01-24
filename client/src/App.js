@@ -10,9 +10,7 @@ import {
 import { Container } from "./components/Grid";
 import Home from "./pages/Home";
 //import Groups from "./pages/Groups";
-
 import Footer from "./components/Footer";
-
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NoMatch from "./pages/NoMatch";
@@ -81,10 +79,7 @@ function App() {
           <ProtectedRoute exact path={["/", "/user"]}>
             <User {...userState} />
           </ProtectedRoute>
-          {/* <ProtectedRoute exact path={["/user/:id"]}>
-            <User {...userState} />
-          </ProtectedRoute> */}
-
+      
           <ProtectedRoute exact path={["/", "/movies/:id"]}>
             <Movie {...userState} />
           </ProtectedRoute>
