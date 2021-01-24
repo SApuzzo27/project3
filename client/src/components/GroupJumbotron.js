@@ -1,9 +1,10 @@
 import React from "react";
+import "../App.css"
 
 function GroupJumbotron({ group, handleLeaveGroup }) {
   return (
-    <div className="text-center col-md-12">
-      <div className="jumbotron jumbotron-fluid">
+    <div className="text-center col-md-12 ">
+      <div className="jumbotron jumbotron-fluid .groupJumbo">
         <div className="container">
           <h1 className="display-4" style={{color:"rgb(5, 5, 93)"}}>{group.clubName}</h1>
           <hr className="my-4" />

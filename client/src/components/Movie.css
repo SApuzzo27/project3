@@ -1,7 +1,9 @@
 .movieCard {
-  border-radius: 5px;
+  align-items: center;
   margin: auto;
   color: rgb(5, 5, 93);
+  border: 5px solid rgba(221, 190, 17, 0.849);
+
 }
 
 .movieCardPoster {

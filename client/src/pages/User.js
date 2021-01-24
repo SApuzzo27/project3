@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import _ from "lodash";
+import "../App.css"
 
 //import OmdbContainer from "../components/OmdbContainer";
 import Container from "../components/Container";
@@ -128,7 +129,7 @@ function User({ username }) {
   return (
     <Container fluid="true">
       <Row>
-        <Col size="md-3">
+        <Col size="md-3 pageContainer">
           <h3>Hello {username} </h3>
           <SearchForm
             handleInputChange={handleInputChange}
@@ -136,7 +137,7 @@ function User({ username }) {
             q={searchTerm}
           />
         </Col>
-        <Col size="md-9">
+        <Col size="md-9" className="resultContainer">
           {searchResult.Title ? (
             <Movie
               title={searchResult.Title}
