@@ -4,7 +4,7 @@ import "../App.css"
 
 function GroupCard({ group, joinGroup }) {
   return (
-    <div className="grpMainDiv">
+  
     <Col size="md-4 " >
       <div className="card mb-3 groupCard">
         <h3 className="card-header" style={{color:"rgb(5, 5, 93)"}}> {group.clubName} </h3>
@@ -30,7 +30,7 @@ function GroupCard({ group, joinGroup }) {
         </div>
       </div>
     </Col>
-    </div>
+ 
   );
 }
 
